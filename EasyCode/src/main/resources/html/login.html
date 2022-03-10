@@ -55,13 +55,14 @@
         <div class="area-contribua">
             <div class="card-dark cardDoLogin" id="cardLogin" style="width: 25rem;">
                 <div class="card-body cardDebaixo">
-                    <form class="form" id="login" style="width: 13rem;">
+                    <form method="post" class="form" id="login" style="width: 13rem;">
                         <h1 class="tituloForm">Login</h1>
+                    <authenticationfailed>
                         <div class="inputsForm">
-                            <input type="text" placeholder="Usuário:" autofocus id="loginUsuario" class="inputForm">
+                            <input name="loginUsuario" type="text" placeholder="Usuário:" autofocus id="loginUsuario" class="inputForm">
                         </div>
                         <div class="inputsForm">
-                            <input type="password" placeholder="Senha:" autofocus id="loginSenha" class="inputForm">
+                            <input name="loginSenha" type="password" placeholder="Senha:" autofocus id="loginSenha" class="inputForm">
                         </div>
                         <p class="textoForm">
                             <a id="linkCriar" class="linkConta">Criar conta</a>
@@ -77,16 +78,16 @@
             <!--Criar Inicio-->
             <div class="card-dark cardDoLogin sconde" id="cardCriarConta" style="width: 25rem;">
                 <div class="card-body card-dark cardDoLogin cardDebaixo">
-                    <form class="form" id="criarConta" style="width: 13rem;">
+                    <form class="form" id="criarConta" method="post" style="width: 13rem;">
                         <h1 class="tituloForm">Criar sua conta</h1>
                         <div class="inputsForm">
-                            <input type="text" placeholder="Nome:" autofocus id="criarNome" class="inputForm">
+                            <input type="text" placeholder="Nome:" autofocus id="criarNome" name="nome" class="inputForm">
                         </div>
                         <div class="inputsForm">
-                            <input type="text" placeholder="Usuário:" autofocus id="criarUsuario" class="inputForm">
+                            <input type="text" placeholder="Usuário:" autofocus id="criarUsuario" name="loginUsuario" class="inputForm">
                         </div>
                         <div class="inputsForm">
-                            <input type="password" placeholder="Senha:" autofocus id="criarSenha" class="inputForm">
+                            <input type="password" placeholder="Senha:" autofocus id="criarSenha" name="loginSenha" class="inputForm">
                         </div>
                         <div class="inputsForm">
                             <input type="password" placeholder="Confirme sua senha:" autofocus id="confirmaSenha"
@@ -103,9 +104,7 @@
                 </div>
     </main>
 
-    <footer class="rodape" id="rodape-contribua">
-        @Copyright
-    </footer>
+
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
