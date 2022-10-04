@@ -1,0 +1,43 @@
+/*
+
+Os termos Data Analytics, Big Data Analytics, Business Analytics, entre ouros Analytics da vida são termos gerenciais que, em sua essência querem nos dizer que precisamos olhar para os dados com seriedade para podermos extrair valor.
+
+		---- Maturidade em análise de dados ----
+A figura a seguir foi apresentada pela empresa de consultoria Gartner e mostra como uma empresa pode amadurecer a sua capacidade de análise com investimento e estratégia.
+		< fig: TheAnalyticsContinuum >
+
+De acordo com os modelos de análise de dados que empregamos, nós podemos agir de duas formas:
+
+		---- Percebendo e respondendo
+Neste primeiro cenário, a análise de dados é mais simples, mais barata e mais rápida. Aqui nós podemos perceber o que está acontecendo e responder ao cenário descoberto, de forma reativa. Os tipos de análise utilizados neste modelo são análises descritivas e diagnósticas.
+
+		---- Prevendo e agindo
+Neste segundo cenário a análise dos dados se torna mais complexa. É muito difícil se atingir essa maturidade sem uma equipe especializada em análise de dados. Aqui nós podemos tomar decisões e agir de forma proativa, antecipando o que irá acontecer. Os tipos de análise usados neste modelo são análises preditivas e prescritivas.
+
+		---- Tipos de análise ----
+Vamos aprender a diferenciar os 4 tipos de análise. Quem se interessar pelo assunto, eu recomendo enormemente a leitura do artigo Król, Karol & Zdonek, Dariusz. (2020). Analytics Maturity Models: An Overview. Information. DOI 11.142.10.3390/info11030142 (https://www.mdpi.com/2078-2489/11/3/142).
+
+		---- Análise Descritiva
+A análise descritiva é a mais fundamental e está relacionada com a descrição do mundo, em geral, utilizando estatística. A pergunta que respondemos é "O que aconteceu?"
+
+Alguns exemplos de perguntas reais seriam "Qual foi a receita deste mês? Quais foram os 5 produtos mais vendidos?
+
+		---- Análise Diagnóstica
+A análise diagnóstica muitas vezes não é dissociada da análise descritiva. A única diferença está na utilização de comparações e correlações estatísticas para identificar insights (intuições) para compreender o presente.
+
+Algumas perguntas possíveis seriam: "Quais os melhores dias para eu vender o meu produto X? Que tipos de produtos são normalmente comprados juntos?"
+
+		---- Análise Preditiva
+A análise preditiva cria modelos que permitem prever potenciais resultados e nos permite se preparar para o futuro.
+
+Algumas perguntas possíveis seriam: "Qual é a previsão de demanda para o produto X no próximo mês? Qual o número esperado de visitantes do museu na próxima semana?"
+
+Análise Prescritiva
+A análise prescritiva avança um pouco além da análise preditiva. Agora, além de tentarmos prever o futuro, utilizaremos a tecnologia para nos sugerir um curso de ação, ou seja, um caminho a ser seguido baseados nos dados analisados.
+
+Algumas perguntas possíveis são: "Como eu posso vender mais produtos X? Como eu posso aumentar o engajamento dos meus alunos na sala de aula virtual?"
+
+		---- BONUS! Análise Cognitiva
+A análise cognitiva está ganhando espaço recentemente e se relaciona com o uso de tecnologias autônomas que aprendem e se adaptam sem a intervenção humana. Isso envolve monitoramento, análise interação e ação em tempo-real. A aplicação mais famosa no momento que utiliza este tipo de análise são os carros autônomos, que precisam reagir em tempo real a milhares de dados coletados a cada segundo, entendendo o ambiente e decidindo sobre a melhor ação a ser tomada de forma automática, ou seja, sem que seja aprovado ou validado pelo homem.
+
+*/

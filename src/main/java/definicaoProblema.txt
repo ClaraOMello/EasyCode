@@ -1,0 +1,11 @@
+transformar uma pergunta para uma pergunta orientada a dados
+
+
+
+REDEFINIÇÃO PRECISA DO PROBLEMA
+
+	Um problema NÃO pode ser definido com precisão se somente é dado atenção aos dados que mostram diretamente o problema. É necessário uma AANÁLISE DE FATOS E JULGAMENTOS.
+
+	* Fatos: circunstâncias que causam diretamente o problema
+	* Julgamentos: observações a serem discutidas ou decididas
+

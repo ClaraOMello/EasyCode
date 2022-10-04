@@ -1,0 +1,47 @@
+Uma estratégia de dados nos ajuda a entender perguntas que gostaríamos de responder e que tipo de dados eu preciso para respondê-la.
+
+Por exemplo, suponha que você possui uma clínica de estética e quer criar um canal de atendimento por meio de um Chatbot. Você saberia dizer quais tipos de dúvidasos seus clientes buscam e que poderiam ser respondidas por um bot? Esses seus clientes tem uma atitude positiva a interagir com uma máquina? Que tipos de tarefas, tais como agendamento, cancelamento, entre outras, poderiam ser automatizadas com os Chatbots?
+
+Suponha agora que você trabalha em uma rede de academias. O que você está precisando fazer: captar novos clientes ou aumentar o engajamento dos seus clientes atuais? Para cada situação, os dados necessários seriam diferentes.
+
+Se puder, assista ao documentário: O Dilema das RedesLinks para um site externo., do Netflix, para entender como os novos negócios digitais estão usando a tecnologia para explorar as fraquezas humanas.
+
+		---- Tipos de dados coletados ----
+Vários são os tipos de dados que podemos coletar. Vamos agora entender um pouco sobre cada um deles.
+
+	-- Dados pessoais
+Esta categoria inclui informações de identificação pessoal e não pessoal. As principais informações pessoais que são coletadas são idade, sexo, grau de instrução, entre outras informações demográficas que podem ajudar a construir um perfil do usuário. AS informações não pessoais incluem endereço IP da máquina, fornecido pelo provedor, cookies do navegador da web e IDs de dispositivo, que seu laptop e dispositivo móvel possuem. Essas informações contam quais sites você visita, por onde você se conecta e em que lugares se conecta, dentre diversas outras informações que ajudam a construir a sua impressão digital.
+
+	-- Dados de engajamento
+Este tipo de dado detalha como os consumidores interagem com o site da empresa, aplicativos móveis, páginas de mídia social, e-mails, anúncios pagos e canais de atendimento ao cliente. Um exemplo famoso de indicador de engajamento é o NPS (Net Promoter Score), mas toda vez que um usuário curte um post de uma empresa, ele está fornecendo um dado precioso de engajamento.
+
+	-- Dados comportamentais
+Esta categoria inclui detalhes transacionais, como históricos de compra, informações de uso do produto (por exemplo, ações repetidas) e dados qualitativos (por exemplo, informações de movimento do mouse).
+
+	-- Dados de atitude
+Este tipo de dado abrange métricas de satisfação do consumidor, critérios de compra, conveniência do produto e muito mais. Dados de atitude mostram se o usuário está propenso a fazer uma compra ou a se inscrever em um serviço, por exemplo. Aqueles questionários com perguntas na escala de Likert, com informações como: concordo, discordo e indiferente, por exemplo, são normalmente coletas de dados de atitude.
+
+		---- Como utilizar os dados ----
+Agora que já sabemos o que é uma estratégia de dados e os tipos de dados que podemos coletar, é hora de definirmos como coletar e utilizar esses dados na nossa estratégia. O vídeo a seguir irá apresentar os fundamentos da coleta e uso dos dados em um negócio dirigido por dados.
+
+1. Para melhorar a experiência do cliente
+Para muitas empresas, os dados do consumidor oferecem uma maneira de entender melhor e atender às demandas de seus clientes. Ao analisar o comportamento do cliente, bem como um vasto acervo de comentários e feedback, as empresas podem modificar agilmente sua presença digital, bens ou serviços para melhor atender ao mercado atual. As empresas buscam cada vez mais a individualização para a tomada de decisão. Isso significa que ela precisa coletar muitos dados sobre você para decidir "o que é melhor para você", entende?
+
+2. Para refinar a estratégia de marketing de uma empresa
+Os dados contextualizados podem ajudar as empresas a entender como os consumidores estão se envolvendo e respondendo às suas campanhas de marketing. As empresas buscam entender o que os consumidores desejam com base no que já fizeram. Sistemas de recomendação exploram enormemente essa estratégia.
+
+3. Para transformar os dados em fluxo de caixa
+A venda de dados já é um negócio altamente lucrativo. Esta indústria de compra e venda de dados surgiu com o Big Data, e gerou novas oportunidades de receita.
+
+4. Para proteger mais dados
+Algumas empresas usam dados do consumidor para proteger informações mais confidenciais. Por exemplo, as instituições financeiras podem utilizar dados de reconhecimento de voz ou outro dado biométrico para autorizar um usuário a acessar suas informações financeiras ou protegê-los contra tentativas de fraude.
+
+	-- Questões legais e regulamentares
+A LGPD e GDPR são leis que regulamentam a coleta, a utilização e o tratamento dos dados pessoais de cidadãos no Brasil e na União Europeia. Essas leis definem a necessidade do consentimento do usuário para que a coleta seja feita. Elas determinam critérios a serem adotados na coleta e armazenamento de dados sensíveis, principalmente no que se refere à proteção desses dados. Elas também definem responsabilidades, como quem é o controlador e quem é o operador do dado.
+
+Lei Geral de Proteção de Dados (http://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/L13709.htm) (LGPD)
+General Data Protection Regulation (https://gdpr-info.eu/) (GDPR)
+Sempre que for coletar dados de usuários, é interessante que essa legislação seja consultada. A ajuda de uma empresa especializada em direito digital também pode ser recomendável. Alguns sistemas já possuem "conformidade" com essas regulamentações. O que significa que eles já possuem os níveis de segurança necessários para o armazenamento e proteção dos dados, além de já possuírem os recursos tecnológicos para automatizar a obtenção do consentimento dos mesmos.
+
+
+	
