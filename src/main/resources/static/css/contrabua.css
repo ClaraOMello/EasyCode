@@ -1,0 +1,68 @@
+/*Página Contribua*/
+.pagina-titulo {
+    margin: 10px;
+}
+
+.texto-contribua img {
+    border-radius: 500px;
+    width: 40%;
+    aspect-ratio: 1/1;
+}
+
+.area-contribua {
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.texto-contribua {
+    text-align: center;
+    padding-top: 1rem;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+.texto-contribua p {
+    margin-bottom: 30px;
+}
+
+.texto-contribua a {
+    text-decoration: none;
+    color: white;
+}
+
+/*Card de Login*/
+.card-dark {
+    background-color: rgb(24, 23, 26);
+}
+
+.cardDoLogin {
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+
+.cardDebaixo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.linkForm,
+.linkConta {
+    color: white !important;
+}
+
+.tituloForm{
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.inputsForm {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.butaoForm{
+    width: 13rem;
+}

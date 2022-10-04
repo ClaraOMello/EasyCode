@@ -1,0 +1,27 @@
+/*Página Tópico linguagem*/
+.textoTopicos a {
+    text-decoration: none;
+    color: white;
+}
+
+.textoTopicos li {
+    margin-bottom: 20px;
+}
+
+.tituloLinguagemTopicos {
+    margin-left: 15%;
+    margin-top: 15px;
+    margin-bottom: 30px;
+    font-size: 4rem;
+}
+
+.textoTopicos a:hover {
+    color: rgb(121, 91, 151);
+}
+
+.mainTopicos {
+    background-color: rgba(37, 25, 60, 0.251);
+    padding: 25px;
+    margin: 15px 15% 20px;
+    border-radius: 10px;
+}

@@ -1,0 +1,150 @@
+/*Página Perfil User*/
+.cabecalhoPerfil {
+    width: 100%;
+    height: 250px;
+    background-color: rgb(17, 1, 44);
+}
+
+.cabecalhoPerfil .avatar {
+    margin: 90px 0 10px 100px;
+    border-radius: 300px;
+    border: solid;
+    border-width: 10px;
+    border-color: rgb(7, 1, 16);
+    max-height: 250px;
+}
+
+.infoUser {
+    max-width: 100%;
+    margin: 10px;
+    border-radius: 10px;
+}
+
+.infoPessoal {
+    margin-top: 60px;
+    text-align: justify;
+}
+
+.infoPessoal i {
+    font-size: 1.5rem;
+    margin-left: 7px;
+    margin-top: 10px;
+}
+
+.infoConteudosProduzidos {
+    margin-top: 1rem;
+}
+
+.arquivoUser {
+    color: white;
+}
+
+.arquivoUser a,
+.infoPessoal a {
+    text-decoration: none;
+    color: white;
+}
+
+#tbTbh {
+    overflow-wrap: normal;
+}
+
+#diminuiMargem {
+    margin-top: 1.5rem;
+}
+
+#tbDivH {
+    padding: 0%;
+}
+
+#tbTbh {
+    margin-bottom: 0;
+}
+
+#tbDivC {
+    height: 660px;
+    background-color: rgb(7, 1, 16);
+    overflow-x: auto;
+    margin-top: 0px;
+    border: 1px solid rgba(33, 37, 41, 1.0);
+    --bs-gutter-x: 0;
+    word-wrap: break-word;
+}
+
+#conteudotable {
+    background-color: 121214;
+    color: aliceblue;
+    border-color: rgba(33, 37, 41, 1.0);
+    font-size: 14px;
+}
+
+#tbCursos {
+    margin-bottom: 0;
+
+}
+
+.table-dark {
+    border-bottom-color: rgba(33, 37, 41, 1.0)
+}
+
+.btn-block {
+    display: block;
+    width: 100%;
+}
+
+.col-xl-6 {
+    position: relative;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.btnTestinho {
+    position: absolute;
+    right: 2rem;
+}
+
+.tituloTabela,
+.autorTabela,
+.linguaTabela,
+.linkTabela,
+.botoesTabela {
+    width: 15rem;
+    position: relative;
+    align-items: center;
+    font-size: 11pt;
+    
+}
+
+.linkTabela a {
+    color: white;
+}
+
+@media screen and (max-width: 450px) {
+    .btnTestinho {
+        position: relative;
+        right: 0;
+    }
+
+    .cabecalhoPerfil .avatar {
+        margin: 1rem 3rem 3rem 3.5rem;
+        border-radius: 300px;
+        border: solid;
+        border-width: 10px;
+        border-color: rgb(7, 1, 16);
+        max-height: 250px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .cabecalhoPerfil .avatar {
+        display: none;
+    }
+}
+
+.modal-content{
+    background-color: #221f22;
+}
+
+#titleCad{
+    color:white
+}
