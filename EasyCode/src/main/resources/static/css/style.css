@@ -1,0 +1,419 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #111011;
+    color: white;
+    padding: 0;
+    margin: 0;
+}
+
+.sconde {
+    display: none;
+}
+
+/*Cabeçalho*/
+#logo {
+    margin: 3px;
+    height: 64px;
+    border-radius: 50px;
+    opacity: 0.85;
+}
+
+.menu {
+    background-color: #0a0a0a;
+    padding: 7px;
+    justify-items: center;
+}
+
+#tituloPagina {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    position: absolute;
+    top: 2%;
+    left: 90px;
+    opacity: 0.69
+}
+
+.menu ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    position: absolute;
+    right: 40px;
+    top: 26px;
+    font-size: 1.2rem;
+}
+
+.menu a {
+    text-decoration: none;
+    color: white;
+}
+
+.menu a.active {
+    color: rgb(167, 114, 218);
+}
+
+.menu a:hover {
+    color: rgb(146, 53, 226);
+}
+
+#userFotoCabecalho {
+    top: 30px;
+    height: 40px;
+    border-radius: 50px;
+    opacity: 0.85;
+}
+
+/*Menu celular*/
+#menu-box,
+.menu-icons i {
+    display: none;
+}
+
+/*************************************************** BOTOES ******************************************************/
+.btn {
+    box-shadow: none !important;
+    border-color: white !important;
+    color: white;
+}
+
+/*Página Edição*/
+textarea {
+    display: block;
+    width: 80%;
+    margin-left: 10%;
+    margin-bottom: 15px;
+}
+
+#conteudoLing {
+    min-height: 700px;
+}
+
+#btEnviar,
+#btSalvar {
+    margin: 0px;
+    background-color: rgb(8, 2, 24) !important;
+    color: white;
+    border: solid;
+    border-width: 2px;
+    border-radius: 10px;
+    padding: 3px 30px;
+}
+
+#btEnviar:hover,
+#btSalvar:hover {
+    border-color: rgb(98, 56, 125);
+    color: rgb(177, 159, 194);
+}
+
+.botoesLing {
+    position: absolute;
+    right: 100px;
+
+}
+
+
+
+/*Rodapé*/
+.rodape,
+.rodapeLing {
+    background-color: rgb(3, 0, 12);
+    padding: 10px;
+    margin-top: 20px;
+    justify-items: center;
+    position: absolute;
+    width: 100%;
+    font-size: 0.9rem;
+}
+
+.rodapeLing {
+    margin-top: 40px;
+}
+
+
+/*Reponsividade*/
+
+@media screen and (max-width: 768px) {
+    .banner {
+        height: 300px;
+        margin: 0;
+        margin-top: 113px;
+    }
+
+    .tituloModeloLing,
+    .conteudoModeloLing,
+    .exemploModeloLing,
+    .exercicioModeloLing {
+        background-color: rgba(37, 25, 60, 0.459);
+        margin: 10px 5px;
+        padding: 25px;
+        text-align: justify;
+        border-radius: 10px;
+        font-size: 0.85rem;
+    }
+
+    .exemploModeloLing pre {
+        background-color: rgb(12, 1, 22);
+        border-radius: 10px;
+        height: 100%;
+        font-size: 0.8rem;
+    }
+
+    main {
+        margin-top: 113px !important;
+    }
+
+    /*Menu para celular*/
+    #menu-box:checked~label i:first-child {
+        display: none;
+    }
+
+    #menu-box:checked~label i:nth-child(2) {
+        display: block;
+    }
+
+    #menu-box:not(checked)~label i:first-child {
+        display: block;
+    }
+
+    #menu-box:not(checked)~label i:nth-child(2) {
+        display: none;
+    }
+
+    #menu-box:checked~ul {
+        height: 100%;
+    }
+
+    .menu ul {
+        display: grid;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        height: 0%;
+        width: 100%;
+        position: fixed;
+        z-index: 555;
+        background-color: rgba(3, 0, 12, 0.95);
+        overflow: hidden;
+        justify-items: center;
+        justify-content: center;
+        align-content: center;
+        font-size: 1.3rem;
+    }
+
+    .menu {
+        top: 0;
+        position: fixed;
+        z-index: 900;
+        width: 100%;
+
+    }
+
+    .menu-icons {
+        position: fixed;
+        font-size: 1.8rem;
+        right: 25px;
+        top: 42px;
+        z-index: 999;
+    }
+
+    #logo {
+        margin: 10px;
+    }
+
+    #userFotoCabecalho,
+     #tituloPagina{
+        display: none;
+    }
+
+    .card1,
+    .card2 {
+        background-position: 100% 90%;
+        height: 200px;
+    }
+
+}
+
+
+@media screen and (max-width: 520px) {
+    #tbTbh,
+    #novoArquivo {
+        display: none;
+    }
+
+    .cabecalhoPerfil .avatar {
+        margin: 65px 0 0 60px;
+        max-height: 130px;
+    }
+
+    .cabecalhoPerfil {
+        height: 150px;
+    }
+
+    .infoPessoal {
+        margin-top: 20px;
+    }
+
+    .infoConteudosProduzidos {
+        margin-top: 20px;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .banner {
+        height: 250px;
+    }
+
+    .colabore {
+        margin: 0 10px 33px;
+        font-size: 0.8rem;
+    }
+
+    .card1,
+    .card2 {
+        height: 180px;
+    }
+
+    .cards p {
+        font-size: 0.9rem;
+    }
+}
+
+@media screen and (max-width: 370px) {
+    .banner {
+        height: 200px;
+    }
+
+    .sobre p {
+        font-size: 0.9rem;
+    }
+
+    .card1,
+    .card2 {
+        height: 170px;
+    }
+
+    .card1 {
+        background-position: 20% 100%;
+    }
+
+    .card2 {
+        background-position: 70% 100%;
+    }
+
+    .colabore {
+        margin: 0 10px 33px;
+    }
+
+    .colabore p {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 769px) and (max-width: 992px) {
+    .banner {
+        height: 400px;
+        margin: 0;
+    }
+}
+
+@media screen and (min-width: 993px) and (max-width: 1200px) {
+    .banner {
+        height: 450px;
+    }
+}
+
+@media screen and (min-width: 500px) {
+    #rodape-contribua {
+        bottom: 0px;
+    }
+}
+
+#titleCad {
+    color: black
+}
+
+#teste2 {
+    --bs-gutter-x: 0rem;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.cad {
+    border-color: #8157E6;
+}
+
+.btn-block {
+    display: block;
+    width: 100%;
+}
+
+.col-xl-6 {
+    position: relative;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+#tbDivH {
+    padding: 0%;
+}
+
+#tbTbh {
+    margin-bottom: 0;
+}
+
+#tbDivC {
+    height: 660px;
+    background-color: rgb(7, 1, 16);
+    overflow-x: auto;
+    margin-top: 0px;
+    border: 1px solid rgba(33, 37, 41, 1.0);
+    --bs-gutter-x: 0;
+    word-wrap: break-word;
+}
+
+#conteudotable {
+    background-color: 121214;
+    color: aliceblue;
+    border-color: rgba(33, 37, 41, 1.0);
+    font-size: 14px;
+}
+
+#tbCursos {
+    margin-bottom: 0;
+
+}
+
+.table-dark {
+    border-bottom-color: rgba(33, 37, 41, 1.0)
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(33, 37, 41, 1.0);
+    -webkit-box-shadow: inset 0 0 6px rgba(33, 37, 41, 1.0)
+}
+
+::-webkit-scrollbar-thumb {
+    box-shadow: inset 0 0 6px rgba(33, 37, 41, 1.0);
+    -webkit-box-shadow: inset 0 0 6px rgba(33, 37, 41, 1.0)
+}
+
+#diminuiMargem {
+    margin-top: 60px;
+}
+
+/*Quiz*/

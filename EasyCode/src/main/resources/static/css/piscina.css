@@ -1,0 +1,150 @@
+/*Pagina Principal*/
+:root {
+    --hue-neutral: 200;
+}
+
+/*Banner*/
+.banner {
+    background-image: url(../img/banner.png);
+    background-size: cover;
+    background-position: 0% 52%;
+    height: 420px;
+    opacity: 0.92;
+}
+
+/*Sobre*/
+.sobre {
+    margin-top: 30px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 1rem;
+    background-color: rgba(33, 33, 33);
+    border-radius: 15px;
+    opacity: 0.86;
+}
+
+/*Colabore*/
+.colabore {
+    background-color: rgba(113, 52, 211, 0.192);
+    padding: 7px;
+    padding-top: 15px;
+    border-radius: 15px;
+    margin-top: 13px;
+    text-align: center;
+}
+
+.colabore h3 {
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+
+.colabore a {
+    text-decoration: none;
+    color: white;
+}
+
+/*Cards*/
+.cardRow {
+    margin-top: 20px;
+    padding: 10px;
+}
+
+.cardRow p,
+.colabore p {
+    margin-top: 10px;
+    font-size: 1.13rem;
+    font-weight: 400;
+}
+
+.card1,
+.card2,
+.card3 {
+    background-size: cover;
+    background-position: 100% 93%;
+    height: 240px;
+    border-radius: 10px;
+    opacity: 0.9;
+}
+
+.card1 {
+    background-image: url(../img/cardQuiz4.jpeg);
+    text-align: right;
+    padding-right: 20px;
+    padding-left: 31%;
+}
+
+.card2 {
+    background-image: url(../img/cardC4.png);
+    margin-top: 20px;
+    padding-left: 20px;
+    padding-right: 31%;
+}
+
+.card3 {
+    background-image: url(../img/cardHTML3.png);
+    text-align: right;
+    margin-top: 13px;
+    padding-right: 20px;
+    padding-left: 31%;
+}
+
+.linkCard {
+    text-decoration: none;
+    color: white;
+    background-color: rgba(114, 26, 178, 0.634);
+    padding: 5px 10px;
+    border-radius: 10px;
+    border: solid;
+    border-width: 3px;
+    border-color: rgb(23, 3, 72);
+}
+
+.linkCard:hover {
+    color: rgb(14, 2, 46);
+    background-color: rgb(141, 32, 220);
+}
+
+.modal-content {
+    --hue: var(--hue-neutral);
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 800px;
+    max-width: 80%;
+    background-color: darkslategray;
+    border-radius: 5px;
+    box-shadow: 0 0 10px 2px;
+}
+
+.btn-quiz {
+    --hue: var(--hue-neutral);
+    border: 1px solid hsl(var(--hue), 100%, 30%);
+    background-color: hsl(var(--hue), 100%, 50%);
+    border-radius: 5px;
+    padding: 5px 10px;
+    color: white;
+    outline: none;
+}
+
+.butoes {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.btn-info {
+    color: black;
+}
+
+.nxt-btn,
+.close-btn {
+    font-size: 1.1rem;
+    font-weight: bold;
+    padding: 10px 20px;
+}
+
+.botaoModalQuiz {
+    margin-top: 1rem;
+}
