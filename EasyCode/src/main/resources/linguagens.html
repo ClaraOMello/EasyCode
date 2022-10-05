@@ -19,7 +19,22 @@
     <title>EasyCode</title>
 </head>
 
-<body>
+<script type="text/javascript">
+
+    function confirmarDeleteLinguagem(id, nome, img) {  
+        
+        if (confirm('Confirmar a exclusão da linguagem [' + nome + '] (ID ' + id + ') com img ' + img)) {  
+            location.href = '/ling/delete/' + id;
+        }
+    }
+    function onLoad() {
+        if(document.getElementById("msg").value != ""){
+          alert(document.getElementById("msg").value);
+        }
+    }
+</script>
+
+<body onload="onLoad()">
 
     <header>
         <nav class="menu">
@@ -34,14 +49,20 @@
                 <li><a href="index.html">Home</a></li>
                 <li><a href="linguagens.html" class="active">Linguagens</a></li>
                 <li><a href="contribua.html">Contribua</a></li>
-                </li><a href="contribua.html"><img src="static/img/profile.png" alt="User" id="userFotoCabecalho"></a>
+                <li><a href="contribua.html"><img src="static/img/profile.png" alt="User" id="userFotoCabecalho"></a></li>
             </ul>
         </nav>
     </header>
 
     <main>
-        <div class="cardsAreaLinguagens" id="areaDosCardsLinguagens"></div>
+        <div class="cardsAreaLinguagens" id="areaDosCardsLinguagens">
+		    <input type="hidden" id="msg" name="msg" value="">
+		    <CARDS-LINGUAGEM>
+		</div>
+        
     </main>
+    
+    
 
     <footer class="rodape">
         @Copyright

@@ -148,7 +148,7 @@ const conteudos = [
 
 /* ------------------------------------------------ */
 
-
+/*
 let txtTopicos = '';
 
 onload = () => {
@@ -157,3 +157,4 @@ onload = () => {
         document.getElementById('areaDosCardsLinguagens').innerHTML = `${txtTopicos}`;
     }
 }
+*/
