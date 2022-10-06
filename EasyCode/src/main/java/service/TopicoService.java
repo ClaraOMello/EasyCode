@@ -157,6 +157,8 @@ public class TopicoService {
 		*/				
 	}
 	
+	
+	// gerar pagina com listagem dos topicos
 	public void makeForm(int ling) {
 		String nomeArquivo = "src/main/resources/linguagemTopicos.html";
 		form = "";
@@ -177,11 +179,36 @@ public class TopicoService {
 		
 		List<Topico> topicos = topicoDAO.getTopicos(ling);
 		for (Topico t : topicos) {
-			list += "<a href=\"conteudoDaLinguagem/" + t.getId() + "\"><li>" + t.getNome() + "</li></a>";
+			list += "<a href=\"/conteudo/" + t.getId() + "\"><li>" + t.getNome() + "</li></a>";
 		}
 		list += "</ul>";
 		
 		form = form.replaceFirst("<TOPICOS>", list);
+	}
+	
+	// gerar pagina com conteudo do topico
+	public void makeForm(Topico topico) {
+		String nomeArquivo = "src/main/resources/conteudoDaLinguagem.html";
+		form = "";
+		String txtLinguagem="";
+		try{
+			Scanner entrada = new Scanner(new File(nomeArquivo));
+		    while(entrada.hasNext()){
+		    	form += (entrada.nextLine() + "\n");
+		    }
+		    entrada.close();
+		}  catch (Exception e) { System.out.println(e.getMessage()); }
+		
+		txtLinguagem = "<h1 id=\"tituloPagina\">"+topicoDAO.getNomeLinguagem(topico.getLing())+" - "+topico.getNome()+" </h1>";
+		
+		form = form.replaceFirst("<TITULO-CONTEUDO>", txtLinguagem);
+		
+		txtLinguagem = "<div class=\"tituloModeloLing\">\r\n"
+				+ "                    <span> " + topico.getNome() + "</span>\r\n"
+				+ "                    </div>";
+		txtLinguagem += "<div class=\"conteudoModeloLing\">"+ topico.getConteudo() +"</div>";
+		
+		form = form.replaceFirst("<CONTEUDO-LINGUAGEM>", txtLinguagem);
 	}
 	
 	public Object insert(Request request, Response response) {
@@ -213,8 +240,25 @@ public class TopicoService {
 	    response.header("Content-Type", "text/html");
 	    response.header("Content-Encoding", "UTF-8");
 		return form;
-	}			
+	}		
 	
+	// apresenta conteudo do topico escolhido
+	public Object getConteudo(Request request, Response response) {
+		int id = Integer.parseInt(request.params(":id"));		
+		Topico topico = (Topico) topicoDAO.get(id);
+		
+		if (topico != null) {
+			response.status(200); // success
+			makeForm(topico);
+        } else {
+            response.status(404); // 404 Not found
+            String resp = "Tópico da linguagem " + id + " não encontrado.";
+    		makeForm();
+    		form.replaceFirst("<input type=\"hidden\" id=\"msg\" name=\"msg\" value=\"\">", "<input type=\"hidden\" id=\"msg\" name=\"msg\" value=\""+ resp +"\">");     
+        }
+
+		return form;
+	}
 	
 	public Object get(Request request, Response response) {
 		int id = Integer.parseInt(request.params(":id"));		

@@ -44,7 +44,7 @@ public class LinguagemService {
 		}  catch (Exception e) { System.out.println(e.getMessage()); }
 		List <Linguagem> lings = lingDAO.get();;
 		for (Linguagem lgs : lings) {
-			list += "<a href=\"topicos/" + lgs.getId() + "\"><img src=\" "+ lgs.getImg() +"\" alt=\"card " 
+			list += "<a href=\"/topicos/" + lgs.getId() + "\"><img src=\" "+ lgs.getImg() +"\" alt=\"card " 
 					+ lgs.getNome() + " \" class=\"cardsLinguagens\"></a>\r\n";
 		}
 		form = form.replaceFirst("<CARDS-LINGUAGEM>", list);

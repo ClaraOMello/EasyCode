@@ -48,6 +48,8 @@ public class Aplicacao {
         
         //meus
         get("/topicos/:ling", (request, response) -> topService.getAllLing(request, response));
+        
+        get("/conteudo/:id", (request, response) -> topService.getConteudo(request, response));
 
              
     }
