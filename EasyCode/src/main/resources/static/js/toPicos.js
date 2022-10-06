@@ -226,8 +226,4 @@ onload = () => {
         }
     }
 
-    for (let i = 0; i < conteudos.length; i++)
-    {
-
-    }
 }
