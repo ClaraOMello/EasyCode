@@ -79,7 +79,7 @@ CREATE TABLE IF NOT EXISTS mensagemchat
     data date,
     CONSTRAINT pk_mensagemchat PRIMARY KEY (id),
     CONSTRAINT fk_mensagemchat_enviou FOREIGN KEY (enviou)
-        REFERENCES colaborador (id) MATCH SIMPLE,
+        REFERENCES colaborador (id),
     CONSTRAINT fk_mensagemchat_recebeu FOREIGN KEY (recebeu)
-        REFERENCES colaborador (id) MATCH SIMPLE,
+        REFERENCES colaborador (id),
 );
