@@ -26,11 +26,6 @@ public class TopicoService {
 	}
 
 	
-//	public void makeForm(int orderBy) {
-//		makeForm(FORM_INSERT, new Topico(), orderBy);
-//	}
-
-	
 	public void makeForm(int tipo, Topico topico, int orderBy) {
 		String nomeArquivo = "src/main/resources/linguagemTopicos.html";
 		form = "";
@@ -52,109 +47,7 @@ public class TopicoService {
 		}
 		list += "</ul>";
 		
-		form = form.replaceFirst("<TOPICOS>", list);
-		//String umServico = "";
-		/*String novoServico = "";
-		if(tipo != FORM_INSERT) {
-			novoServico += "<font size=\"+1.5\"><b>&nbsp;&nbsp;&nbsp;<a href=\"/topico/list/1\" id=\"addServico\"> Novo serviço"; 
-			novoServico += "<i class=\"fa-regular fa-square-plus\"></i></a></b></font>";
-
-			form = form.replaceFirst("<NOVO-SERVICO>", novoServico);		
-		}*/
-		/*
-		
-		
-		if(tipo == FORM_INSERT || tipo == FORM_UPDATE) {
-			String action = "/topico/";
-			String name, servico, buttonLabel;
-			if (tipo == FORM_INSERT){
-				action += "insert";
-				name = "Inserir Serviço";
-				servico = "massagem";
-				buttonLabel = "Inserir";
-			} else {
-				action += "update/" + topico.getId();
-				name = "Atualizar Serviço (ID " + topico.getId() + ")";
-				servico = topico.getServico();
-				buttonLabel = "Atualizar";
-			}
-			umServico += "\t<form class=\"form--register\" action=\"" + action + "\" method=\"post\" id=\"form-add\">";
-			umServico += "\t<table width=\"80%\" bgcolor=\"#f3f3f3\" align=\"center\">";
-			umServico += "\t\t<tr>";
-			umServico += "\t\t\t<td colspan=\"3\" align=\"left\"><font size=\"+2\"><b>&nbsp;&nbsp;&nbsp;" + name + "</b></font></td>";
-			umServico += "\t\t</tr>";
-			umServico += "\t\t<tr>";
-			umServico += "\t\t\t<td colspan=\"3\" align=\"left\">&nbsp;</td>";
-			umServico += "\t\t</tr>";
-			umServico += "\t\t<tr>";
-			umServico += "\t\t\t<td>&nbsp;Serviço: <input class=\"input--register\" type=\"text\" name=\"servico\" value=\""+ servico +"\"></td>";
-			umServico += "\t\t\t<td>Preço: <input class=\"input--register\" type=\"text\" name=\"preco\" value=\""+ topico.getPreco() +"\"></td>";
-			umServico += "\t\t\t<td>Duração: <input class=\"input--register\" type=\"text\" name=\"duracao\" value=\""+ topico.getDuracao() +"\"></td>";
-			umServico += "\t\t\t<td align=\"center\"><input type=\"submit\" value=\""+ buttonLabel +"\" class=\"input--main__style input--button\" id=\"botaoPrinc\"></td>";
-			umServico += "\t\t</tr>";
-			umServico += "\t</table>";
-			umServico += "\t</form>";		
-		} else if (tipo == FORM_DETAIL){
-			umServico += "\t<table width=\"80%\" bgcolor=\"#f3f3f3\" align=\"center\">";
-			umServico += "\t\t<tr>";
-			umServico += "\t\t\t<td colspan=\"3\" align=\"left\"><font size=\"+2\"><b>&nbsp;&nbsp;&nbsp;Detalhar Serviço (ID " + topico.getId() + ")</b></font></td>";
-			umServico += "\t\t</tr>";
-			umServico += "\t\t<tr>";
-			umServico += "\t\t\t<td colspan=\"3\" align=\"left\">&nbsp;</td>";
-			umServico += "\t\t</tr>";
-			umServico += "\t\t<tr>";
-			umServico += "\t\t\t<td>&nbsp;Serviço: "+ topico.getServico() +"</td>";
-			umServico += "\t\t\t<td>Preço: "+ topico.getPreco() +"</td>";
-			umServico += "\t\t\t<td>Duração: "+ topico.getDuracao() + " minutos</td>";
-			umServico += "\t\t</tr>";
-			umServico += "\t\t<tr>";
-			//umServico += "\t\t\t<td>&nbsp;Data de fabricação: "+ produto.getDataFabricacao().toString() + "</td>";
-			//umServico += "\t\t\t<td>Data de validade: "+ produto.getDataValidade().toString() + "</td>";
-			umServico += "\t\t\t<td>&nbsp;</td>";
-			umServico += "\t\t</tr>";
-			umServico += "\t</table>";		
-		} else {
-			System.out.println("ERRO! Tipo não identificado " + tipo);
-		}
-		form = form.replaceFirst("<UM-SERVICO>", umServico);
-		
-		String list = new String("<table width=\"80%\" align=\"center\" bgcolor=\"#f3f3f3\" id=\"tableListar\">");
-		list += "\n<tr><td colspan=\"6\" align=\"left\"><font size=\"+2\"><b>&nbsp;&nbsp;&nbsp;Relação de Serviços</b></font>" +
-				"<font size=\\\"+1.5\\\"><b>&nbsp;&nbsp;&nbsp;<a href=\\\"/topico/list/1\\\" id=\\\"addServico\\\"> Novo serviço "
-				+ "<i class=\\\"fa-regular fa-square-plus\\\"></i></a></b></font> </td></tr>\n" +
-				"\n<tr><td colspan=\"6\">&nbsp;</td></tr>\n" +
-    			"\n<tr>\n" + 
-        		"\t<td><a href=\"/topico/list/" + FORM_ORDERBY_ID + "\"><b>ID</b></a></td>\n" +
-        		"\t<td><a href=\"/topico/list/" + FORM_ORDERBY_NOME + "\"><b>Serviço</b></a></td>\n" +
-        		"\t<td><a href=\"/topico/list/" + FORM_ORDERBY_PRECO + "\"><b>Preço</b></a></td>\n" +
-        		"\t<td width=\"100\" align=\"center\"><b>Detalhar</b></td>\n" +
-        		"\t<td width=\"100\" align=\"center\"><b>Atualizar</b></td>\n" +
-        		"\t<td width=\"100\" align=\"center\"><b>Excluir</b></td>\n" +
-        		"</tr>\n";
-		
-		List<Topico> servicos;
-		if (orderBy == FORM_ORDERBY_ID) {                 	servicos = topicoDAO.getOrderById();
-		} else if (orderBy == FORM_ORDERBY_NOME) {		servicos = topicoDAO.getOrderByServico();
-		} else if (orderBy == FORM_ORDERBY_PRECO) {			servicos = topicoDAO.getOrderByPreco();
-		} else {											servicos = topicoDAO.get();
-		}
-
-		int i = 0;
-		String bgcolor = "";
-		for (Topico s : servicos) {
-			bgcolor = (i++ % 2 == 0) ? "#fff5dd" : "#dddddd";
-			list += "\n<tr class=\"listagem\" bgcolor=\""+ bgcolor +"\">\n" + 
-            		  "\t<td>" + s.getId() + "</td>\n" +
-            		  "\t<td>" + s.getServico() + "</td>\n" +
-            		  "\t<td>" + s.getPreco() + "</td>\n" +
-            		  "\t<td align=\"center\" valign=\"middle\"><a href=\"/topico/" + s.getId() + "\"><i class=\"fa-solid fa-magnifying-glass-plus\"></i></a></td>\n" +
-            		  "\t<td align=\"center\" valign=\"middle\"><a href=\"/topico/update/" + s.getId() + "\"><i class=\"fa-solid fa-pen-to-square\"></i></a></td>\n" +
-            		  "\t<td align=\"center\" valign=\"middle\"><a href=\"javascript:confirmarDeleteServico('" + s.getId() + "', '" + s.getServico() + "', '" + s.getPreco() + "');\"><i class=\"fa-solid fa-trash\"></i></a></td>\n" +
-            		  "</tr>\n";
-		}
-		list += "</table>";		
-		form = form.replaceFirst("<LISTAR-SERVICO>", list);
-		*/				
+		form = form.replaceFirst("<TOPICOS>", list);				
 	}
 	
 	

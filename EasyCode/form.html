@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="text/html; charset = UTF-8" http-equiv="content-type">
+    <script src="https://kit.fontawesome.com/2dca481b1d.js" crossorigin="anonymous"></script>
+    <title>Teste Ling</title>
+</head>
+
+<script type="text/javascript">
+
+    function confirmarDeleteLinguagem(id, nome, img) {  
+        
+        if (confirm('Confirmar a exclusão da linguagem [' + nome + '] (ID ' + id + ') com img ' + img)) {  
+            location.href = '/ling/delete/' + id;
+        }
+    }
+    function onLoad() {
+        if(document.getElementById("msg").value != ""){
+          alert(document.getElementById("msg").value);
+        }
+    }
+</script>
+    
+    
+<body onload="onLoad()">
+    <nav id="nav">
+        <span><div class="divLogo"><img src="/image/logo.png" alt="logo" id="logo"></div></span>
+        <span><h1>Linguagens</h1></span>
+    </nav>
+
+    <div id="fundo-topo"></div>
+    <input type="hidden" id="msg" name="msg" value="">
+    <UM-SERVICO>
+    
+    <LISTAR-SERVICO>
+    <style>
+        #addServico {
+            position: absolute;
+            right: 40px;
+            margin-top: 5px;
+        }
+        #tableListar{
+            /*background-color: #C3B091;*/
+            /*background-color: rgba(135, 77, 2, 0.619);*/
+            background-color: rgba(75, 43, 1, 0.296); ;
+        }
+        
+        .listagem {
+            height: 35px;
+        }
+        .fa-solid {
+            font-size: 1.2rem;
+        }
+        .divLogo {
+            width: 30%;
+        }
+        #nav {
+            display: flex;
+            background-color: rgba(82, 45, 2, 0.829);
+            color: white;
+        }
+        #nav h1 {
+            position: absolute;
+            right: 20px;
+        }
+
+        #logo {
+            height: 50px;
+            margin: 7px
+        }
+        #fundo-topo {
+            background-image: url(/image/homeSpa.jpg);
+            background-size: cover;
+            width: 100%;
+            height: 300px;
+            background-position: 0% 87%;
+        }
+        a {
+            text-decoration: none;
+            color: black;
+        }
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            margin: 0px;
+        }
+
+
+        .divBotao {
+            width: 10%;
+            background-color: black;
+        }
+        #botaoPrinc {
+            width: 100%;
+            background-color: rgba(82, 45, 2, 0.829);
+        }
+        
+        .input--button {
+            font-weight: bold;
+            font-family: Arial;
+            font-size: medium;
+            border-color: transparent;
+            display: block;
+            margin: 0px auto;
+            color: white;
+        }
+
+        .input--register {
+            margin-left: 5px;
+            width: 90%;
+            height: 40px;
+        }
+
+        input {
+            background-color: #c3b09170;
+            display: block;
+            border-radius: 7px;
+            padding: 10px;
+            border-style: solid;
+            border-color: rgba(128, 128, 128, 0.766);
+            color: black;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        form p {
+            text-align: initial;
+            display: inline;
+            margin-left: 15px;
+        }
+
+        .p--nomargin {
+            margin-left: 0px;
+            margin-right: 10px;
+        }
+
+        table {
+            margin: auto;
+            margin-top: 10px;
+            /*background-color: rgba(75, 43, 1, 0.181); */
+            border-radius: 10px;
+            width: 98%;
+            padding: 10px;
+        }
+    </style>
+</body>
+    
+</html>

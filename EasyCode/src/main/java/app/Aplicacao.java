@@ -27,8 +27,7 @@ public class Aplicacao {
 //           
 //        get("/ling/delete/:id", (request, response) -> lingService.delete(request, response));
         
-        
-        //meus
+
         get("/linguagens", (request, response) -> lingService.mostra(request, response));
         
         
@@ -46,7 +45,6 @@ public class Aplicacao {
 //        get("/top/delete/:id", (request, response) -> topService.delete(request, response));
         
         
-        //meus
         get("/topicos/:ling", (request, response) -> topService.getAllLing(request, response));
         
         get("/conteudo/:id", (request, response) -> topService.getConteudo(request, response));
