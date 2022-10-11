@@ -55,8 +55,8 @@ CREATE TABLE IF NOT EXISTS colaborador
 
 /* 
 insert into colaborador values
-(0, 'adm', 'adm@pucminas.br', 'adm123', true),
-(1, 'user', 'user@pucminas.br', 'user123', false); 
+(0, true, 'adm', 'adm@pucminas.br', 'adm123'),
+(1, false, 'user', 'user@pucminas.br', 'user123'); 
 */
 
 CREATE TABLE IF NOT EXISTS gerenciatopico

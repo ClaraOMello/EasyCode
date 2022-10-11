@@ -6,6 +6,7 @@ import static spark.Spark.*;
 
 import service.LinguagemService;
 import service.TopicoService;
+import service.ColaboradorService;
 import spark.Response;
 import util.Path;
 import util.UserController;
@@ -19,6 +20,7 @@ public class Aplicacao {
 
     private static LinguagemService lingService = new LinguagemService();
     private static TopicoService topService = new TopicoService();
+    private static ColaboradorService colabService = new ColaboradorService();
 
     public static void main(String[] args) {
         port(6789);
@@ -41,10 +43,8 @@ public class Aplicacao {
 
         get(Path.Web.PERFIL, UserController.serveUserPage); // Talvez colaborador?
 
-
-        // Isso aqui está errado. Deveria ser /linguagem/:ling e o lingService.getLing
-        // Nem tenho certeza
-        get("/topicos/:ling", (request, response) -> topService.getAllLing(request, response));
+        get("/topicos/:ling", (request, response) -> topService.getAllTopicosFromLing(request, response));
+        post("/login/insert", (request, response) -> colabService.insert(request, response));
 
 
     }

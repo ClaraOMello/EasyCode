@@ -134,7 +134,7 @@ public class TopicoService {
     }
 
     // apresenta topicos de cada ling
-    public Object getAllLing(Request request, Response response) {
+    public Object getAllTopicosFromLing(Request request, Response response) {
         int ling = Integer.parseInt(request.params(":ling"));
         makeForm(ling);
         response.header("Content-Type", "text/html");

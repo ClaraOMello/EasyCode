@@ -11,11 +11,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <link rel="icon" href="./static/img/logo.png">
-    <link rel="stylesheet" href="./static/css/style.css">
-    <link rel="stylesheet" href="./static/css/contrabua.css">
-    <script defer src="./static/js/abeia.js"></script>
-    <script defer src="./static/js/contribua.js"></script>
+    <link rel="icon" href="/static/img/logo.png">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/contrabua.css">
+    <script defer src="/static/js/abeia.js"></script>
+    <script defer src="/static/js/contribua.js"></script>
     <title>EasyCode</title>
 </head>
 <!---->
@@ -24,7 +24,7 @@
 
     <header>
         <nav class="menu">
-            <a href="index.html"><img src="./static/img/logo.png" alt="Home" id="logo"></a>
+            <a href="index.html"><img src="/static/img/logo.png" alt="Home" id="logo"></a>
             <h1 id="tituloPagina">Contribua</h1>
             <input type="checkbox" id="menu-box">
             <label for="menu-box" class="menu-icons">
@@ -32,10 +32,10 @@
                 <i class="fa-regular fa-circle-xmark"></i>
             </label>
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="linguagens.html">Linguagens</a></li>
-                <li><a href="contribua.html" class="active">Contribua</a></li>
-                </li><a href="contribua.html"><img src="./static/img/profile.png" alt="User" id="userFotoCabecalho"></a>
+                <li><a href="/">Home</a></li>
+                <li><a href="/linguagens">Linguagens</a></li>
+                <li><a href="/contribua.html" class="active">Contribua</a></li>
+                </li><a href="/contribua.html"><img src="/static/img/profile.png" alt="User" id="userFotoCabecalho"></a>
             </ul>
         </nav>
     </header>
@@ -44,7 +44,7 @@
         <h1 class="pagina-titulo"></h1>
         <div class="area-contribua">
             <div class="card-dark texto-contribua" style="width: 25rem;">
-                <img src="./static/img/profile.png" alt="imagem perfil padrão" class="card-img-top">
+                <img src="/static/img/profile.png" alt="imagem perfil padrão" class="card-img-top">
                 <div class="card-body">
                     <p class="offset-xl-3 col-xl-6 offset-lg-3 col-lg-6 offset-md-2 col-md-8 offset-1 col-10">Por meio
                         desta
@@ -74,24 +74,24 @@
                 </div>
             </div>
             <!--Login Fim-->
-
+			<input type="hidden" id="msg" name="msg" value="">
             <!--Criar Inicio-->
             <div class="card-dark cardDoLogin sconde" id="cardCriarConta" style="width: 25rem;">
                 <div class="card-body card-dark cardDoLogin cardDebaixo">
-                    <form class="form" id="criarConta" method="post" style="width: 13rem;">
+                    <form class="form" id="criarConta" action="login/insert" " method="post" style="width: 13rem;">
                         <h1 class="tituloForm">Criar sua conta</h1>
                         <div class="inputsForm">
-                            <input type="text" placeholder="Nome:" autofocus id="criarNome" name="nome" class="inputForm">
+                            <input type="text" placeholder="Usuário:" autofocus id="nome" name="nome" class="inputForm" required>
                         </div>
                         <div class="inputsForm">
-                            <input type="text" placeholder="Usuário:" autofocus id="criarUsuario" name="loginUsuario" class="inputForm">
+                            <input type="text" placeholder="Email: " autofocus id="email" name="email" class="inputForm" required>
                         </div>
                         <div class="inputsForm">
-                            <input type="password" placeholder="Senha:" autofocus id="criarSenha" name="loginSenha" class="inputForm">
+                            <input type="password" placeholder="Senha:" autofocus id="senha" name="senha" class="inputForm" required>
                         </div>
                         <div class="inputsForm">
-                            <input type="password" placeholder="Confirme sua senha:" autofocus id="confirmaSenha"
-                                class="inputForm">
+                            <input type="password" placeholder="Confirme sua senha:" autofocus id="confirmaSenha" name="confirmaSenha"
+                                class="inputForm" required>
                         </div>
                         <p class="textoForm">
                             <a id="linkLogin" class="linkConta">Entre na sua conta.</a>
@@ -102,8 +102,12 @@
                     </form>
                     <!--Criar Fim-->
                 </div>
+             </div>
     </main>
-
+    
+    <footer class="rodape">
+        @Copyright
+    </footer>
 
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

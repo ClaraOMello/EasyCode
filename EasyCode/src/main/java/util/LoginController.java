@@ -26,17 +26,19 @@ public class LoginController {
         Map<String, Object> model = new HashMap<>();
         String user = null;
         String pass = null;
-        String name = null;
+        // String name = null;
         try {
         user = getQueryUsername(request);
         pass = getQueryPassword(request);
-        name = getQueryName(request);
+        // name = getQueryName(request);
         } catch(Exception e) {}
 
-        boolean tryingToRegister = name != null;
-        if (tryingToRegister) {
-            UserController.register(user, pass);
-        } else if (!UserController.authenticate(user, pass)) {
+//        boolean tryingToRegister = name != null;
+//        if (tryingToRegister) {
+//            UserController.register(user, pass);
+//        } else 
+        
+        if (!UserController.authenticate(user, pass)) {
             model.put("authenticationFailed", LOGIN_FAILED);
             return ViewUtil.render(request, model, Path.toFile(Path.Web.LOGIN));
         }
