@@ -62,6 +62,7 @@ public class ColaboradorDAO extends DAO {
 	        if(rs.next()){            
 	        	 colab = new Colaborador(rs.getInt("id"), rs.getBoolean("adm"), rs.getString("nome"), rs.getString("email"), 
 	                				   rs.getString("senha"));
+	        	 colab.setDescricao(rs.getString("descricao"));
 	        }
 	        st.close();
 		} catch (Exception e) {
@@ -69,7 +70,26 @@ public class ColaboradorDAO extends DAO {
 		}
 		return colab;
 	}
-	
+	public Colaborador getByNome(String nome) {
+        Colaborador colab = null;
+        
+        try {
+            Statement st = conexao.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
+            String sql = "SELECT * FROM colaborador WHERE nome='"+nome+"'";
+            ResultSet rs = st.executeQuery(sql);    
+            if(rs.next()){            
+                 colab = new Colaborador(rs.getInt("id"), rs.getBoolean("adm"), rs.getString("nome"), rs.getString("email"), 
+                                       rs.getString("senha"));
+
+                 colab.setDescricao(rs.getString("descricao"));
+            }
+            st.close();
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
+        return colab;
+    }
+    
 	
 	public List<Colaborador> get() {
 		return get("");
@@ -101,6 +121,7 @@ public class ColaboradorDAO extends DAO {
 	        while(rs.next()) {	            	
 	        	Colaborador c = new Colaborador(rs.getInt("id"), rs.getBoolean("adm"), rs.getString("nome"), rs.getString("email"), 
      				   rs.getString("senha"));
+	        	c.setDescricao(rs.getString("descricao"));
 	            colabs.add(c);
 	        }
 	        st.close();
@@ -115,10 +136,11 @@ public class ColaboradorDAO extends DAO {
 		boolean status = false;
 		try {  
 			String sql = "UPDATE colaborador SET adm = '" + colaborador.getAdm() + "', "
-					   + "nome = " + colaborador.getNome() + ", " 
-					   + "email = " + colaborador.getEmail() + ", " 
-					   + "senha = " + colaborador.getSenha() 
-					   + " WHERE id = " + colaborador.getId();
+					   + "nome = '" + colaborador.getNome() + "', " 
+					   + "email = '" + colaborador.getEmail() + "', " 
+					   + "senha = '" + colaborador.getSenha() + "', " 
+		               + "descricao = '" + colaborador.getDescricao() 
+					   + "' WHERE id = " + colaborador.getId();
 			PreparedStatement st = conexao.prepareStatement(sql);
 			st.executeUpdate();
 			st.close();

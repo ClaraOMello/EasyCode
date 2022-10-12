@@ -20,7 +20,15 @@
 </head>
 <!---->
 
-<body>
+<script type="text/javascript">
+    function onLoad() {
+        if(document.getElementById("msg").value != ""){
+          alert(document.getElementById("msg").value);
+        }
+    }
+</script>
+
+<body onload="onLoad()">
 
     <header>
         <nav class="menu">
@@ -78,7 +86,7 @@
             <!--Criar Inicio-->
             <div class="card-dark cardDoLogin sconde" id="cardCriarConta" style="width: 25rem;">
                 <div class="card-body card-dark cardDoLogin cardDebaixo">
-                    <form class="form" id="criarConta" action="login/insert" " method="post" style="width: 13rem;">
+                    <form class="form" id="criarConta" action="login/insert" method="post" style="width: 13rem;">
                         <h1 class="tituloForm">Criar sua conta</h1>
                         <div class="inputsForm">
                             <input type="text" placeholder="Usuário:" autofocus id="nome" name="nome" class="inputForm" required>
@@ -97,7 +105,7 @@
                             <a id="linkLogin" class="linkConta">Entre na sua conta.</a>
                         </p>
                         <div class="inputsForm">
-                            <button class="btn btn-primary btn-block" type="submit">Continuar</button>
+                            <button class="btn btn-primary btn-block" type="submit" >Continuar</button>
                         </div>
                     </form>
                     <!--Criar Fim-->

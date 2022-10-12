@@ -32,6 +32,12 @@ public class Aplicacao {
         before("*", noIndex);
         before("*", contribuaToLogin);
 
+        get("/topicos/:ling", (request, response) -> topService.getAllTopicosFromLing(request, response));
+        
+        post("/login/insert", (request, response) -> colabService.insert(request, response));
+        get("/colaboradorAdm/update/:id", (request, response) -> colabService.updateAdm(request, response)); // atualiza colabborador comum para administrador
+        post("/perfilUser/update/:id", (request, response) -> colabService.updateInfoPessoal(request, response));
+        get("colaborador/delete/:id", (request, response) -> colabService.delete(request, response));
 
         get(Path.Web.INDEX, (request, response) -> ViewUtil.render(request, null,  Path.toFile(Path.Web.INDEX)));
         get(Path.Web.LINGUAGENS, (request, response) -> lingService.mostra(request, response));
@@ -43,8 +49,6 @@ public class Aplicacao {
 
         get(Path.Web.PERFIL, UserController.serveUserPage); // Talvez colaborador?
 
-        get("/topicos/:ling", (request, response) -> topService.getAllTopicosFromLing(request, response));
-        post("/login/insert", (request, response) -> colabService.insert(request, response));
 
 
     }

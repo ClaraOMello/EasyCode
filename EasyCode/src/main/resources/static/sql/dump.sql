@@ -19,6 +19,7 @@ CREATE TABLE IF NOT EXISTS linguagem
  (531 , 'deleite 2.0', './static/img/logo.png');
  */
 
+/* existencia do topico nao eh mais dependende da existencia de uma linguagem */
 CREATE TABLE IF NOT EXISTS topico
 (
     id integer NOT NULL,
@@ -52,6 +53,10 @@ CREATE TABLE IF NOT EXISTS colaborador
     CONSTRAINT pk_colaborador PRIMARY KEY (id),
     CONSTRAINT unique_colaborador_nome UNIQUE (nome)
 );
+
+/* ainda nao ha metodos para inclusao desses atributos (falta atributo da imagem de perfil)*/
+ALTER TABLE colaborador ADD COLUMN adesao date;
+ALTER TABLE colaborador ADD COLUMN descricao varchar(150); 
 
 /* 
 insert into colaborador values

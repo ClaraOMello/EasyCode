@@ -3,12 +3,14 @@ package service;
 import java.util.Scanner;
 //import java.time.LocalDate;
 import java.io.File;
+import java.time.format.DateTimeFormatter;
 //import java.time.LocalDateTime;
 import java.util.List;
 import dao.ColaboradorDAO;
 import model.Colaborador;
 import spark.Request;
 import spark.Response;
+import util.Path;
 
 public class ColaboradorService {
 	private ColaboradorDAO colaboradorDAO = new ColaboradorDAO();
@@ -160,6 +162,92 @@ public class ColaboradorService {
         }  catch (Exception e) { System.out.println(e.getMessage()); }
 	}
 	
+    // personalizar perfil para cada usuario
+	private void makePerfil(Colaborador colaborador) {
+	    String file = "";
+        try{
+            Scanner entrada = new Scanner(new File("src/main/resources/html/perfilUser.html"));
+            while(entrada.hasNext()){
+                file += (entrada.nextLine() + "\n");
+            }
+            entrada.close();
+        }  catch (Exception e) { System.out.println(e.getMessage()); }
+        makePerfil(file, colaborador);
+	}
+	public String makePerfil(String file, Colaborador user) {
+	    // file eh a pagina de perfil sem personalizacao por usuario
+	    DateTimeFormatter df = DateTimeFormatter.ofPattern("dd/MM/uuuu");
+	    String texto = "";
+	    form = file;
+	    
+	    String tipoUser = "Colaborador";
+	    if (user != null) {
+    	    if (user.getAdm()) {
+    	        tipoUser = "Administrador";
+    	        // adm pode gerenciar outros usuarios
+    	        List<Colaborador> colabs = colaboradorDAO.get();
+    	        texto += "<button type=\"button\" id=\"start-btn\" class=\"btn\" data-bs-toggle=\"modal\"\r\n"
+    	                + "                            data-bs-target=\"#configColab\">\r\n"
+    	                + "                            Configurações de colaboradores\r\n"
+    	                + "                </button>";
+    	        texto += "<div class=\"modal\" tabindex=\"-1\" id=\"configColab\">\r\n"
+    	                + "                  <div class=\"modal-dialog modal-lg\">\r\n"
+    	                + "                    <div class=\"modal-content\">\r\n"
+    	                + "                      <div class=\"modal-header\">\r\n"
+    	                + "                        <h5 class=\"modal-title\">Configurações dos Colaboradores</h5>\r\n"
+    	                + "                        <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"modal\" aria-label=\"Close\"></button>\r\n"
+    	                + "                      </div>\r\n"
+    	                + "                      <div class=\"modal-body\">\r\n"
+    	                + "                        <table>\r\n"
+    	                + "                            <thead>\r\n"
+    	                + "                                <tr>\r\n"
+    	                + "                                    <th scope=\"col\" class=\"col-8\"> usuário </th>\r\n"
+    	                + "                                    <th scope=\"col\" > adm </th>\r\n"
+    	                + "                                </tr>\r\n"
+    	                + "                            </thead>";
+    	        for (Colaborador c : colabs) {
+    	            texto += "<tr class=\"card-text\"> \r\n"
+    	                    + "                                <td>"+c.getNome()+"</td>\r\n"
+    	                    + "                                <td>\r\n"
+    	                    + "                                    <a href=\"/colaboradorAdm/update/"+c.getId()+"\" style=\"border:none\" class=\"btn\" id=\"adm\"><u>Tornar Adm</u></a>\r\n"
+    	                    + "                                </td>                       \r\n"
+    	                    + "                            </tr>";
+    	            if(c.getAdm()) texto = texto.replace("                                    <a href=\"/colaboradorAdm/update/" + c.getId() + "\" style=\"border:none\" class=\"btn\" id=\"adm\"><u>Tornar Adm</u></a>\r\n", "já é administrador\r\n");
+    	        }
+    	        texto += "</table>\r\n"
+    	                + "                      </div>\r\n"
+    	                + "                      <div class=\"modal-footer\">\r\n"
+    	                + "                        <button type=\"button\" class=\"btn btn-secondary\" data-bs-dismiss=\"modal\">Fechar</button>\r\n"
+    	                + "                      </div>\r\n"
+    	                + "                    </div>\r\n"
+    	                + "                  </div>\r\n"
+    	                + "                </div>\r\n";
+    	        
+    	        form = form.replaceFirst("<CONFIG-COLABORADOR-PARA-ADM>", texto);
+    	    }
+    	    
+    	    if (user.getDescricao() != null && user.getDescricao() != "") texto = user.getDescricao();
+    	    else texto = "Olá! Estou usando o EasyCode";
+    	    form = form.replaceFirst("<DESCRICAO>", texto);
+    	    
+    	    form = form.replaceFirst("<EXCLUSAO-PERFIL>", "<button type=\"button\" id=\"start-btn\" class=\"btn\" onclick=\"confirmarDeletePerfil("+user.getId()+", '"+ user.getNome()+"')\">\r\n"
+    	            + "                            Excluir perfil\r\n"
+    	            + "                        </button>");
+    	    
+    	    // para preencher modal de atualizacao
+    	    form = form.replaceFirst("<form class=\"form\" action=\"/perfilUser/update\" method=\"post\" id=\"atualizarPerfil\">", "<form class=\"form\" action=\"/perfilUser/update/"+user.getId()+"\" method=\"post\" id=\"atualizarPerfil\">");
+    	    form = form.replaceFirst("<input type=\"text\" autofocus id=\"editaDescricao\" name=\"editaDescricao\" class=\"inputForm\" value=\"\">", "<input type=\"text\" autofocus id=\"editaDescricao\" name=\"editaDescricao\" class=\"inputForm\" value=\""+ texto +"\">");
+    	    form = form.replaceFirst("<input type=\"text\" autofocus id=\"editaNome\" name=\"editaNome\" class=\"inputForm\" value=\"\">", "<input type=\"text\" autofocus id=\"editaNome\" name=\"editaNome\" class=\"inputForm\" value=\""+user.getNome()+"\">");
+    	    form = form.replaceFirst("<input type=\"text\" autofocus id=\"editaEmail\" name=\"editaEmail\" class=\"inputForm\" value=\"\">", "<input type=\"text\" autofocus id=\"editaEmail\" name=\"editaEmail\" class=\"inputForm\" value=\""+user.getEmail()+"\">");
+    	    
+            form = form.replaceFirst("<span class=\"black\">Nome:</span> <span id=\"nomeUser\">Standro</span> <br>", "<span class=\"black\">Nome:</span> <span id=\"nomeUser\">"+user.getNome()+"</span> <br>");
+            form = form.replaceFirst("<span class=\"black\">Tipo de Usuário:</span> <span id=\"tipoUser\"> xxx </span> <br>", "<span class=\"black\">Tipo de Usuário:</span> <span id=\"tipoUser\"> "+ tipoUser +" </span> <br>");
+            form = form.replaceFirst("<span class=\"black\">Data de adesão:</span> <span id=\"anoUser\">2022</span><br>", "<span class=\"black\">Data de adesão:</span> <span id=\"anoUser\">"+user.getAdesao().format(df) +"</span><br>"); // tempo aparece a hora atual
+	    }
+        return form;
+        
+	}
+	
 	public Object insert(Request request, Response response) {
 		String nome = request.queryParams("nome");
 		String email = request.queryParams("email");
@@ -179,14 +267,15 @@ public class ColaboradorService {
 			response.status(404); // 404 Not found
 		}
 		
-		makeLogin();
+		//makeLogin();
+		response.redirect(Path.Web.LOGIN);
 		
 		return form.replaceFirst("<input type=\"hidden\" id=\"msg\" name=\"msg\" value=\"\">", "<input type=\"hidden\" id=\"msg\" name=\"msg\" value=\""+ resp +"\">");
 	}
 
 	
 	public Object get(Request request, Response response) {
-		int id = Integer.parseInt(request.params(":id"));		
+	    int id = Integer.parseInt(request.params(":id"));		
 		Colaborador colaborador = (Colaborador) colaboradorDAO.get(id);
 		
 		if (colaborador != null) {
@@ -198,7 +287,8 @@ public class ColaboradorService {
     		// makeForm();
     		form.replaceFirst("<input type=\"hidden\" id=\"msg\" name=\"msg\" value=\"\">", "<input type=\"hidden\" id=\"msg\" name=\"msg\" value=\""+ resp +"\">");     
         }
-
+		
+		form.replace("<span class=\"black\">Tipo de Usuário:</span> <span id=\"tipoUser\"> xxx </span> <br>", "<span class=\"black\">Tipo de Usuário:</span> <span id=\"tipoUser\"> HEEEEYYYYY </span> <br>");
 		return form;
 	}
 
@@ -229,6 +319,46 @@ public class ColaboradorService {
 		return form;
 	}			
 	
+	public Object updateAdm(Request request, Response response) {
+	    int id = Integer.parseInt(request.params(":id"));
+	    String resp = "";
+	    Colaborador colaborador = colaboradorDAO.get(id);
+	    
+	    if (colaborador != null) {
+	        colaborador.setAdm(true);
+            colaboradorDAO.update(colaborador);
+            response.status(200); // success
+            resp = "Usuário (ID " + colaborador.getId() + ") agora é administrador!";
+        } else {
+            response.status(404); // 404 Not found
+            resp = "Usuário (ID " + colaborador.getId() + ") não encontrado!";
+        }
+	    response.redirect(Path.Web.PERFIL);
+	    return form.replaceFirst("<input type=\"hidden\" id=\"msg\" name=\"msg\" value=\"\">", "<input type=\"hidden\" id=\"msg\" name=\"msg\" value=\""+ resp +"\">");
+	}
+	
+	public Object updateInfoPessoal(Request request, Response response) {
+        int id = Integer.parseInt(request.params(":id"));
+        String resp = "";
+        Colaborador colaborador = colaboradorDAO.get(id);
+        
+        if (colaborador != null) {
+            colaborador.setNome(request.queryParams("editaNome"));
+            colaborador.setEmail(request.queryParams("editaEmail"));
+            colaborador.setDescricao(request.queryParams("editaDescricao"));
+            colaboradorDAO.update(colaborador);
+            response.status(200); // success
+            resp = "Usuário (ID " + colaborador.getId() + ") atualizado!";
+        } else {
+            response.status(404); // 404 Not found
+            resp = "Usuário (ID " + colaborador.getId() + ") não encontrado!";
+        }
+        makePerfil(colaborador);
+        form = form.replaceFirst("<input type=\"hidden\" id=\"msg\" name=\"msg\" value=\"\">", "<input type=\"hidden\" id=\"msg\" name=\"msg\" value=\""+ resp +"\">");
+        response.redirect(Path.Web.PERFIL);
+        return form;
+    }
+	
 	public Object update(Request request, Response response) {
         int id = Integer.parseInt(request.params(":id"));
 		Colaborador colaborador = colaboradorDAO.get(id);
@@ -243,10 +373,10 @@ public class ColaboradorService {
         	//produto.setDataValidade(LocalDate.parse(request.queryParams("dataValidade")));
         	colaboradorDAO.update(colaborador);
         	response.status(200); // success
-            resp = "Serviço (ID " + colaborador.getId() + ") atualizado!";
+            resp = "Usuário (ID " + colaborador.getId() + ") atualizado!";
         } else {
             response.status(404); // 404 Not found
-            resp = "Serviço (ID " + colaborador.getId() + ") não encontrado!";
+            resp = "Usuário (ID " + colaborador.getId() + ") não encontrado!";
         }
 		// makeForm();
 		return form.replaceFirst("<input type=\"hidden\" id=\"msg\" name=\"msg\" value=\"\">", "<input type=\"hidden\" id=\"msg\" name=\"msg\" value=\""+ resp +"\">");
@@ -266,7 +396,12 @@ public class ColaboradorService {
             response.status(404); // 404 Not found
             resp = "Usuário (" + id + ") não encontrado!";
         }
-		// makeForm();
-		return form.replaceFirst("<input type=\"hidden\" id=\"msg\" name=\"msg\" value=\"\">", "<input type=\"hidden\" id=\"msg\" name=\"msg\" value=\""+ resp +"\">");
+        
+        request.session().removeAttribute("currentUser");
+        request.session().attribute("loggedOut", true);
+        response.redirect(Path.Web.LOGIN);
+		makeLogin();
+        form.replaceFirst("<input type=\"hidden\" id=\"msg\" name=\"msg\" value=\"\">", "<input type=\"hidden\" id=\"msg\" name=\"msg\" value=\""+ resp +"\">");
+		return form;
 	}
 }

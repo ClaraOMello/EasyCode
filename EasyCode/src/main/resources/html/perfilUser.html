@@ -20,7 +20,24 @@
     <title>EasyCode</title>
 </head>
 
-<body>
+<script type="text/javascript">
+	function confirmarDeletePerfil(id, nome) {  
+	    
+	    if (confirm('Confirmar a exclusão da conta [' + nome + '] (ID ' + id + ')')) {  
+	        location.href = '/colaborador/delete/' + id;
+	        sessionStorage.setItem("isLogged", "Off")
+	        sessionStorage.setItem("userAtual", "")
+	        alert('Usuário [' + nome + '] (ID ' + id + ') excluído')
+	    }
+	}
+    function onLoad() {
+        if(document.getElementById("msg").value != ""){
+          alert(document.getElementById("msg").value);
+        }
+    }
+</script>
+
+<body onload="onLoad()">
 
     <header>
         <nav class="menu">
@@ -41,28 +58,69 @@
     </header>
 
     <main>
+    	<input type="hidden" id="msg" name="msg" value="">
         <div class="cabecalhoPerfil">
             <img class="avatar" src="./static/img/profile.png" alt="Avatar">
         </div>
         <section class="row infoUser">
             <div class="infoPessoal col-12 col-xg-4 col-lg-4 col-md-4">
-                <h3>Descrição: </h3>
+                <h3><span>Descrição:</span>
+                	<span>  
+						<button type="button" id="start-btn" class="btn offset-3" data-bs-toggle="modal"
+                            data-bs-target="#modalEditar" style="border:none">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                        </button>
+                        <EXCLUSAO-PERFIL>
+                    </span>
+                </h3>
+                
+                <div class="modal" tabindex="-1" id="modalEditar">
+				  <div class="modal-dialog">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <h5 class="modal-title">Edição</h5>
+				        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				      </div>
+				      <div class="modal-body">
+				      	<form class="form" action="/perfilUser/update" method="post" id="atualizarPerfil">
+					        <label for="editaDescricao">Descrição: </label> <br>
+					        <input type="text" autofocus id="editaDescricao" name="editaDescricao" class="inputForm" value=""> <br>
+					        <label for="editaNome">Nome: </label> <br>
+					        <input type="text" autofocus id="editaNome" name="editaNome" class="inputForm" value=""> <br>
+				        	<label for="editaNome">Email: </label> <br>
+					        <input type="text" autofocus id="editaEmail" name="editaEmail" class="inputForm" value=""> <br>
+				        	<div class="modal-footer" style="margin-top: 15px">
+						        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+						        <button type="submit" class="btn btn-primary">Salvar</button>
+						    </div>
+				        </form>
+				      </div>
+				    </div>
+				  </div>
+				</div>
+                
+                
                 <p class="text-muted" id="descricaoUser">
-                    Em breve será possível modificar sua descrição,aguarde!
+                    <DESCRICAO>
                 </p>
                 <p>
-                <h3>Detalhes: </h3>
-                <span class="black">Nome:</span> <span id="nomeUser">Standro</span> <br>
-                <span class="black">Tipo de Usuário:</span> <span id="tipoUser">Contribuinte</span> <br>
-                <span class="black">Ano de adesão:</span> <span id="anoUser">2022</span><br>
-
-                <a href="https://www.instagram.com/napucminas/"><i class="fa-brands fa-instagram"></i></a>
-                <a href="https://open.spotify.com/show/16zThjluq50IPlHJQsYXRN"><i class="fa-brands fa-spotify"></i></a>
-                <a href="https://www.youtube.com/watch?v=xvFZjo5PgG0"><i class="fa-brands fa-youtube"></i></a>
-                <a href="https://github.com/ICEI-PUC-Minas-PPLCC-TI/tiaw-ppl-cc-m-20221-t1g7"><i
-                        class="fa-brands fa-github"></i></a>
+	                <h3>Detalhes: </h3>
+	                <span class="black">Nome:</span> <span id="nomeUser">Standro</span> <br>
+	                <span class="black">Tipo de Usuário:</span> <span id="tipoUser"> xxx </span> <br>
+	                <span class="black">Data de adesão:</span> <span id="anoUser">2022</span><br>
+	
+	                <a href="https://www.instagram.com/napucminas/"><i class="fa-brands fa-instagram"></i></a>
+	                <a href="https://open.spotify.com/show/16zThjluq50IPlHJQsYXRN"><i class="fa-brands fa-spotify"></i></a>
+	                <a href="https://www.youtube.com/watch?v=xvFZjo5PgG0"><i class="fa-brands fa-youtube"></i></a>
+	                <a href="https://github.com/ICEI-PUC-Minas-PPLCC-TI/tiaw-ppl-cc-m-20221-t1g7"><i
+	                        class="fa-brands fa-github"></i></a>
                 </p>
+                
+                <CONFIG-COLABORADOR-PARA-ADM>
+			
             </div>
+            
+            
             <div class="infoConteudosProduzidos col-12 col-xg-8 col-lg-8 col-md-8">
                 <div class="row">
                     <h1>Cursos Atualmente:

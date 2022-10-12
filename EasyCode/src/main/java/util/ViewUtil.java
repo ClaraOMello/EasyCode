@@ -5,10 +5,14 @@ import spark.*;
 import java.io.File;
 import java.util.*;
 import static util.RequestUtil.*;
+import dao.ColaboradorDAO;
+import service.ColaboradorService;
 
 
 
 public class ViewUtil {
+    private static ColaboradorDAO colabDAO = new ColaboradorDAO();
+    private static ColaboradorService colabService = new ColaboradorService();
 
     // Renders a template given a model and a request
     // The request is needed to check the user session for language settings
@@ -28,6 +32,10 @@ public class ViewUtil {
                 aux = aux.replaceAll("<" + key.toLowerCase() + ">", value.toString());
             }
         });
+        if (model.get("currentUser") != null) {
+            aux = colabService.makePerfil(aux, colabDAO.getByNome((String)(model.get("currentUser"))));
+        }
+        
         return aux;
     }
     
