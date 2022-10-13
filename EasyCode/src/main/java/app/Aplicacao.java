@@ -31,16 +31,20 @@ public class Aplicacao {
         before("*", removeHtmlFromPath);
         before("*", noIndex);
         before("*", contribuaToLogin);
-
-        get("/topicos/:ling", (request, response) -> topService.getAllTopicosFromLing(request, response));
-        
+       
         post("/login/insert", (request, response) -> colabService.insert(request, response));
         get("/colaboradorAdm/update/:id", (request, response) -> colabService.updateAdm(request, response)); // atualiza colabborador comum para administrador
         post("/perfilUser/update/:id", (request, response) -> colabService.updateInfoPessoal(request, response));
         get("colaborador/delete/:id", (request, response) -> colabService.delete(request, response));
+        
+        get("/edicao/:id", (request, response) -> topService.getToUpdate(request, response));
+        get("/topico/delete/:id", (request, response) -> topService.delete(request, response));
+        get("/topico/insert", (request, response) -> topService.insert(request, response));
+        get("/topico/update/:id", (request, response) -> topService.update(request, response));
 
         get(Path.Web.INDEX, (request, response) -> ViewUtil.render(request, null,  Path.toFile(Path.Web.INDEX)));
         get(Path.Web.LINGUAGENS, (request, response) -> lingService.mostra(request, response));
+        get("/topicos/:ling", (request, response) -> topService.getAllTopicosFromLing(request, response));
         get(Path.Web.CONTEUDO, (request, response) -> topService.getConteudo(request, response));
 
         get(Path.Web.LOGIN, LoginController.serveLoginPage); // forma diferente de fazer a mesma coisa dos de cima

@@ -73,7 +73,7 @@ const conteudos = [
         exercicios: "<p>Em breve...</p>",
     },
 ]
-
+/*
 const getLocalStorage = () => JSON.parse(localStorage.getItem('dbCurso')) ?? conteudos
 const setLocalStorage = (dbCurso) => localStorage.setItem("dbCurso", JSON.stringify(dbCurso))
 
@@ -220,3 +220,4 @@ document.getElementById('btnCadastrar')
 
 document.querySelector('#tbCursos>tbody')
     .addEventListener('click', ediletarCurso)
+*/

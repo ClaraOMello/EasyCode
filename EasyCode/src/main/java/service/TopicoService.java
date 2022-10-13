@@ -3,7 +3,10 @@ package service;
 import java.util.Scanner;
 import java.io.File;
 import java.util.List;
+
+import dao.ColaboradorDAO;
 import dao.TopicoDAO;
+import model.Colaborador;
 import model.Topico;
 import spark.Request;
 import spark.Response;
@@ -11,6 +14,7 @@ import util.Path;
 
 public class TopicoService {
     private TopicoDAO topicoDAO = new TopicoDAO();
+    private ColaboradorDAO colabDAO = new ColaboradorDAO();
     private String form;
     private final int FORM_INSERT = 1;
     private final int FORM_DETAIL = 2;
@@ -19,9 +23,9 @@ public class TopicoService {
     private final int FORM_ORDERBY_NOME = 2;
 
     public TopicoService() {
-        makeForm();
+        //makeForm();
     }
-
+/* nao utilizado
     public void makeForm() {
         makeForm(FORM_INSERT, new Topico(), FORM_ORDERBY_ID);
     }
@@ -51,7 +55,8 @@ public class TopicoService {
 
         form = form.replaceFirst("<TOPICOS>", list);
     }
-
+*/
+    
     // gerar pagina com listagem dos topicos
     public void makeForm(int ling) {
         String nomeArquivo = "src/main/resources/html/linguagemTopicos.html";
@@ -110,30 +115,56 @@ public class TopicoService {
         form = form.replaceFirst("<CONTEUDO-LINGUAGEM>", txtLinguagem);
     }
 
-    public Object insert(Request request, Response response) {
-        int id = Integer.parseInt(request.queryParams("id"));
-        int ling = Integer.parseInt(request.queryParams("ling"));
-        String nome = request.queryParams("nome");
-        String conteudo = request.queryParams("conteudo");
+    public String makeEdicao(Topico topico) {
+        String nomeArquivo = "src/main/resources/html/edicao.html";
+        form = "";
+        String txtEdicao = "";
+        try {
+            Scanner entrada = new Scanner(new File(nomeArquivo));
+            while (entrada.hasNext()) {
+                form += (entrada.nextLine() + "\n");
+            }
+            entrada.close();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        txtEdicao += "<form id=\"edicaoTopico\" action=\"/topico/update/"+topico.getId()+"\">\r\n"
+                + "            <textarea name=\"nomeTopico\" id=\"nomeTopico\" form=\"edicaoTopico\" maxlength=\"100\"> "+topico.getNome()+" </textarea>\r\n"
+                + "            <textarea name=\"conteudoTopico\" id=\"conteudoTopico\" form=\"edicaoTopico\" onkeydown=\"autoResize()\"> "+topico.getConteudo()+" </textarea>\r\n"
+                + "            <div id=\"divBtnEdicao\" ><button type=\"btn\" class=\"btn\" id=\"edicaoCancelaBtn\" onClick=\"voltar()\"> Cancelar </button>\r\n"
+                + "            <button type=\"submit\" class=\"btn\" id=\"edicaoBtn\"> Salvar </button> </div>\r\n"
+                + "        </form>";
+        //txtEdicao += topico.getId() + " - " + topico.getNome() + "<br>" + topico.getConteudo() + "<br>"; 
+        form = form.replaceFirst("<EDICAO-CORPO>", txtEdicao);
+        return form;
+       
+    }
 
+    public Object insert(Request request, Response response) {
+        int ling = Integer.parseInt(request.queryParams("linguagens"));
+        int id = (topicoDAO.getMaiorIdTopicoByLing(ling) > 0) ? (topicoDAO.getMaiorIdTopicoByLing(ling)+ 1) : Integer.parseInt(Integer.toString(ling) + "01");
+        String nome = request.queryParams("titulo");
+        int userId = Integer.parseInt(request.queryParams("autor"));
+        
         String resp = "";
 
-        Topico topico = new Topico(id, ling, nome, conteudo);
+        Topico topico = new Topico(id, ling, nome, "");
 
         if (topicoDAO.insert(topico) == true) {
+            topicoDAO.insertGerenciaTopico(topico, userId);
             resp = "Topico (" + nome + ") inserido!";
             response.status(201); // 201 Created
         } else {
             resp = "Topico (" + nome + ") não inserido!";
             response.status(404); // 404 Not found
         }
-
-        makeForm();
-        return form.replaceFirst("<input type=\"hidden\" id=\"msg\" name=\"msg\" value=\"\">",
-                "<input type=\"hidden\" id=\"msg\" name=\"msg\" value=\"" + resp + "\">");
+        response.redirect(Path.Web.PERFIL);
+        //makeForm();
+        //form = form.replaceFirst("<input type=\"hidden\" id=\"msg\" name=\"msg\" value=\"\">", "<input type=\"hidden\" id=\"msg\" name=\"msg\" value=\"" + resp + "\">");
+        return form;
     }
 
-    // apresenta topicos de cada ling
+    // apresenta topicos de uma ling
     public Object getAllTopicosFromLing(Request request, Response response) {
         int ling = Integer.parseInt(request.params(":ling"));
         makeForm(ling);
@@ -153,7 +184,7 @@ public class TopicoService {
         } else {
             response.status(404); // 404 Not found
             String resp = "Tópico da linguagem " + id + " não encontrado.";
-            makeForm();
+            makeForm(topico);
             form.replaceFirst("<input type=\"hidden\" id=\"msg\" name=\"msg\" value=\"\">",
                     "<input type=\"hidden\" id=\"msg\" name=\"msg\" value=\"" + resp + "\">");
         }
@@ -161,17 +192,18 @@ public class TopicoService {
         return form;
     }
 
+    
     public Object get(Request request, Response response) {
         int id = Integer.parseInt(request.params(":id"));
         Topico topico = (Topico) topicoDAO.get(id);
 
         if (topico != null) {
             response.status(200); // success
-            makeForm(FORM_DETAIL, topico, FORM_ORDERBY_ID);
+            //makeForm(FORM_DETAIL, topico, FORM_ORDERBY_ID);
         } else {
             response.status(404); // 404 Not found
             String resp = "Tópico da linguagem " + id + " não encontrado.";
-            makeForm();
+            //makeForm();
             form.replaceFirst("<input type=\"hidden\" id=\"msg\" name=\"msg\" value=\"\">",
                     "<input type=\"hidden\" id=\"msg\" name=\"msg\" value=\"" + resp + "\">");
         }
@@ -185,11 +217,11 @@ public class TopicoService {
 
         if (topico != null) {
             response.status(200); // success
-            makeForm(FORM_UPDATE, topico, FORM_ORDERBY_NOME);
+            makeEdicao(topico);
         } else {
             response.status(404); // 404 Not found
             String resp = "Tópico " + id + " não encontrado.";
-            makeForm();
+            makeEdicao(topico);
             form.replaceFirst("<input type=\"hidden\" id=\"msg\" name=\"msg\" value=\"\">",
                     "<input type=\"hidden\" id=\"msg\" name=\"msg\" value=\"" + resp + "\">");
         }
@@ -199,7 +231,7 @@ public class TopicoService {
 
     public Object getAll(Request request, Response response) {
         int orderBy = Integer.parseInt(request.params(":orderby"));
-        makeForm(orderBy);
+        //makeForm(orderBy);
         response.header("Content-Type", "text/html");
         response.header("Content-Encoding", "UTF-8");
         return form;
@@ -211,9 +243,9 @@ public class TopicoService {
         String resp = "";
 
         if (topico != null) {
-            topico.setNome(request.queryParams("nome"));
-            topico.setConteudo(request.queryParams("conteudo"));
-            topico.setLing(Integer.parseInt(request.queryParams("ling")));
+            topico.setNome(request.queryParams("nomeTopico"));
+            topico.setConteudo(request.queryParams("conteudoTopico"));
+            //topico.setLing(Integer.parseInt(request.queryParams("ling")));
             topicoDAO.update(topico);
             response.status(200); // success
             resp = "Tópico (ID " + topico.getId() + ") atualizado!";
@@ -221,7 +253,9 @@ public class TopicoService {
             response.status(404); // 404 Not found
             resp = "Tópico (ID " + topico.getId() + ") não encontrado!";
         }
-        makeForm();
+        
+        response.redirect(Path.Web.PERFIL);
+        //makeForm();
         return form.replaceFirst("<input type=\"hidden\" id=\"msg\" name=\"msg\" value=\"\">",
                 "<input type=\"hidden\" id=\"msg\" name=\"msg\" value=\"" + resp + "\">");
     }
@@ -239,7 +273,7 @@ public class TopicoService {
             response.status(404); // 404 Not found
             resp = "Tópico (" + id + ") não encontrado!";
         }
-        makeForm();
+        response.redirect(Path.Web.PERFIL);
         return form.replaceFirst("<input type=\"hidden\" id=\"msg\" name=\"msg\" value=\"\">",
                 "<input type=\"hidden\" id=\"msg\" name=\"msg\" value=\"" + resp + "\">");
     }

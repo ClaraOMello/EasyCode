@@ -22,7 +22,6 @@
 
 <script type="text/javascript">
 	function confirmarDeletePerfil(id, nome) {  
-	    
 	    if (confirm('Confirmar a exclusão da conta [' + nome + '] (ID ' + id + ')')) {  
 	        location.href = '/colaborador/delete/' + id;
 	        sessionStorage.setItem("isLogged", "Off")
@@ -34,6 +33,15 @@
         if(document.getElementById("msg").value != ""){
           alert(document.getElementById("msg").value);
         }
+    }
+    function editarTopico(id) {
+    	location.href = '/edicao/' + id; 
+    }
+    function confirmarDeletarTopico(id) {
+    	if (confirm('Confirmar a exclusão do tópico (ID ' + id + ')')) {  
+	        location.href = '/topico/delete/'+ id;
+	        alert('Tópico (ID ' + id + ') excluído')
+	    }
     }
 </script>
 
@@ -135,7 +143,7 @@
                         <table id="tbTbh" class="table">
                             <thead class="table-dark">
                                 <tr>
-                                    <th scope="col">#</th>
+                                    <th scope="col">ID</th>
                                     <th scope="col">Título</th>
                                     <th scope="col">Autor</th>
                                     <th scope="col">Linguagem</th>
@@ -148,7 +156,7 @@
                     <div class="container" id="tbDivC">
                         <table class="table" id="tbCursos">
                             <tbody>
-
+								<LISTA-TOPICOS>
                             </tbody>
                         </table>
                     </div>
@@ -174,34 +182,32 @@
                     <div class="container">
                         <div class="" style="z-index: 1">
                             <div class="card-body p-6">
-                                <form id="frmCadastro">
+                                <form id="frmCadastro" action="/topico/insert">
+                                	<div class="form-group" style="display:none">
+                                        <input id="autor" data-index="new" type="text" class="form-control cad" placeholder="Autor" name="autor" value="" />
+                                    </div>
                                     <div class="form-group">
                                         <input id="inputTitulo" data-index="new" type="text" class="form-control cad"
-                                            placeholder="Título" required />
+                                            placeholder="Título" name="titulo" required />
                                     </div>
                                     <div class="form-group">
-                                        <input id="inputAutor" type="text" class="form-control cad" placeholder="Autor"
-                                            required />
+                                   		<label for="linguagens">Linguagem: </label> <br>
+										<select name="linguagens" id="linguagens" class="form-control cad">
+										    <option value="xxx"> XXX </option>
+										</select>
                                     </div>
                                     <div class="form-group">
-                                        <input id="inputExercicios" type="text" class="form-control cad"
-                                            placeholder="Terá Exercícios?" required />
-                                    </div>
-                                    <div class="form-group">
-                                        <input id="inputLingua" type="text" class="form-control cad"
-                                            placeholder="Linguagem" required />
-                                    </div>
+					                    <button type="submit" value="Inserir" id="btnCadastrar" class="btn btn-primary btn-block mb-3">
+					                        <i class="fas fa-plus"></i> Cadastrar
+					                    </button>
+					                </div>
                                 </form>
                             </div>
                         </div>
 
                     </div>
                 </div>
-                <div class="form-group">
-                    <button type="button" value="Inserir" id="btnCadastrar" class="btn btn-primary btn-block mb-3">
-                        <i class="fas fa-plus"></i> Cadastrar
-                    </button>
-                </div>
+                
             </div>
         </div>
     </div>
