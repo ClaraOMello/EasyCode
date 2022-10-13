@@ -18,6 +18,12 @@ public class UserController {
     
     private static List<Colaborador> colabs;
 
+    /**
+     * Retorna a página de perfil do usuário
+     * @param request
+     * @param response
+     * @return html
+     */
     public static Route serveUserPage = (Request request, Response response) -> {
         LoginController.ensureUserIsLoggedIn(request, response);
         return ViewUtil.render(request, null, Path.toFile(Path.Web.PERFIL));

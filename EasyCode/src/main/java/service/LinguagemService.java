@@ -53,8 +53,12 @@ public class LinguagemService {
 
     }
 
-    // meus
-
+    /**
+     * Mostra  todas as linguagens
+     * @param request
+     * @param response
+     * @return form
+     */
     public Object mostra(Request request, Response response) {
         makeForm(1);
         response.header("Content-Type", "text/html");

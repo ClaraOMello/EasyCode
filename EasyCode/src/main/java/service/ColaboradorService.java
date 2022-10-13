@@ -202,6 +202,12 @@ public class ColaboradorService {
         
 	}
 	
+	
+	/**
+	 * Cria um login para o usuário na database
+	 * @param request
+	 * @param response
+	 */
 	public Object insert(Request request, Response response) {
 		String nome = request.queryParams("nome");
 		String email = request.queryParams("email");
@@ -282,6 +288,11 @@ public class ColaboradorService {
 		return form;
 	}			
 	
+	/**
+	 * Atualize quem é o administrador
+	 * @param request
+	 * @param response
+	 */
 	public Object updateAdm(Request request, Response response) {
 	    int id = Integer.parseInt(request.params(":id"));
 	    String resp = "";
@@ -300,6 +311,11 @@ public class ColaboradorService {
 	    return form.replaceFirst("<input type=\"hidden\" id=\"msg\" name=\"msg\" value=\"\">", "<input type=\"hidden\" id=\"msg\" name=\"msg\" value=\""+ resp +"\">");
 	}
 	
+	/**
+	 * Atualiza infos pessoais do colaborador
+	 * @param request
+	 * @param response
+	 */
 	public Object updateInfoPessoal(Request request, Response response) {
         int id = Integer.parseInt(request.params(":id"));
         String resp = "";
@@ -322,6 +338,11 @@ public class ColaboradorService {
         return form;
     }
 	
+	/**
+	 * Atualiza os dados do colaborador
+	 * @param request
+	 * @param response
+	 */
 	public Object update(Request request, Response response) {
         int id = Integer.parseInt(request.params(":id"));
 		Colaborador colaborador = colaboradorDAO.get(id);
@@ -346,6 +367,12 @@ public class ColaboradorService {
 	}
 
 	
+
+	/**
+	 * Deleta o colaborador
+	 * @param request
+	 * @param response
+	 */
 	public Object delete(Request request, Response response) {
         int id = Integer.parseInt(request.params(":id"));
         Colaborador colaborador = colaboradorDAO.get(id);

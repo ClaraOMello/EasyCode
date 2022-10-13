@@ -12,6 +12,12 @@ public class LoginController {
     public final static String LOGIN_FAILED = "Usuário e senha inválido";
     public final static String LOGIN_SUCCESS = "Login feito com sucesso";
 
+     /**
+     * Mosrta a página de login e faz setup de variáveis de sessão para tal
+     * @param request
+     * @param response
+     * @return string Página de login
+     */
     public static Route serveLoginPage = (Request request, Response response) -> {
         if (userIsLoggedIn(request)) response.redirect(Path.Web.PERFIL);
         System.out.println("Is user logged in?: " + userIsLoggedIn(request));
@@ -22,6 +28,13 @@ public class LoginController {
     };
 
 
+    /**
+     * Tenta fazer login e retorna se o usuário conseguiu ou não fazer login.
+     * Caso tenha coseguido vai redirecionar pro perfil.
+     * @param request
+     * @param response
+     * @return string
+     */
     public static Route handleLoginPost = (Request request, Response response) -> {
         Map<String, Object> model = new HashMap<>();
         String user = null;
@@ -53,6 +66,12 @@ public class LoginController {
     };
 
 
+    /**
+     * Desloga o usuário e remove variáveis de login da sessão
+     * @param request
+     * @param response
+     * @return null
+     */
     public static Route handleLogoutPost = (Request request, Response response) -> {
         request.session().removeAttribute("currentUser");
         request.session().attribute("loggedOut", true);

@@ -14,9 +14,13 @@ public class ViewUtil {
     private static ColaboradorDAO colabDAO = new ColaboradorDAO();
     private static ColaboradorService colabService = new ColaboradorService();
 
-    // Renders a template given a model and a request
-    // The request is needed to check the user session for language settings
-    // and to see if the user is logged in
+    /**
+     * Troca campos no templatePath por campos no model
+     * @param request
+     * @param model
+     * @param templatePath
+     * @return String
+     */
     public static String render(Request request, Map<String, Object> model, String templatePath) {
         if (model == null) model = new HashMap<>();
         model.put("currentUser", getSessionCurrentUser(request));

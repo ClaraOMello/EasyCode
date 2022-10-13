@@ -55,13 +55,18 @@ public class Aplicacao {
         post(Path.Web.LOGIN, LoginController.handleLoginPost);
         get(Path.Web.DESLOGAR, LoginController.handleLogoutPost);
 
-        get(Path.Web.PERFIL, UserController.serveUserPage); // Talvez colaborador?
+        get(Path.Web.PERFIL, UserController.serveUserPage);
 
 
 
     }
 
 
+    /**
+     * Remove os barras no final das urls
+     * @param request  Request do spark
+     * @param response  Response do spark
+     */
     public static Filter removeTrailingSlashes = (Request request, Response response) -> {
         if (request.pathInfo().endsWith("/") && request.pathInfo().length() > 1) {
             String s = request.pathInfo();
@@ -69,17 +74,32 @@ public class Aplicacao {
             response.redirect(s.substring(0, s.length() -1));
         }
     };
+    /**
+     * Remove .html das urls
+     * @param request  Request do spark
+     * @param response  Response do spark
+     */
     public static Filter removeHtmlFromPath = (Request request, Response response) -> {
         
         if (request.pathInfo().contains(".html")) {
             response.redirect(request.pathInfo().replace(".html", ""));
         }
     };
+    /**
+     * Transforma /index em /
+     * @param request  Request do spark
+     * @param response  Response do spark
+     */
     public static Filter noIndex = (Request request, Response response) -> {
         if (request.pathInfo().equals("/index")) {
             response.redirect("/");
         }
     };
+    /**
+     * Transforma /contribua em /login
+     * @param request  Request do spark
+     * @param response  Response do spark
+     */
     public static Filter contribuaToLogin = (Request request, Response response) -> {
         if (request.pathInfo().equals("/contribua")) {
             response.redirect("/login");

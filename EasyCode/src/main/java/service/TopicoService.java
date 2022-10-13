@@ -140,6 +140,12 @@ public class TopicoService {
        
     }
 
+    /**
+     *  Insere novo topico
+     * @param request
+     * @param response
+     * @return Formulário de inserção. Mas deve redirecionar para o perfil.
+     */
     public Object insert(Request request, Response response) {
         int ling = Integer.parseInt(request.queryParams("linguagens"));
         int id = (topicoDAO.getMaiorIdTopicoByLing(ling) > 0) ? (topicoDAO.getMaiorIdTopicoByLing(ling)+ 1) : Integer.parseInt(Integer.toString(ling) + "01");
@@ -164,7 +170,12 @@ public class TopicoService {
         return form;
     }
 
-    // apresenta topicos de uma ling
+    /**
+     * Retorna todos os tópicos de uma linguagem
+     * @param request
+     * @param response
+     * @return form é o html da página a ser mostrada
+     */
     public Object getAllTopicosFromLing(Request request, Response response) {
         int ling = Integer.parseInt(request.params(":ling"));
         makeForm(ling);
@@ -173,7 +184,12 @@ public class TopicoService {
         return form;
     }
 
-    // apresenta conteudo do topico escolhido
+    /**
+     * Retorna o conteúdo do tópico escolhido
+     * @param request
+     * @param response
+     * @return form que é o html da página a ser mostrada
+     */
     public Object getConteudo(Request request, Response response) {
         int id = Integer.parseInt(request.params(":id"));
         Topico topico = (Topico) topicoDAO.get(id);
@@ -211,6 +227,12 @@ public class TopicoService {
         return form;
     }
 
+    /**
+     * Obtem topico para depois ser atualizado
+     * @param request
+     * @param response
+     * @return form Formulário que serve para atualizar topico
+     */
     public Object getToUpdate(Request request, Response response) {
         int id = Integer.parseInt(request.params(":id"));
         Topico topico = (Topico) topicoDAO.get(id);
@@ -237,6 +259,12 @@ public class TopicoService {
         return form;
     }
 
+    /**
+     * Atualizar topico
+     * @param request
+     * @param response
+     * @return Retorna um form mas deve redirecionar para o perfil.
+     */
     public Object update(Request request, Response response) {
         int id = Integer.parseInt(request.params(":id"));
         Topico topico = topicoDAO.get(id);
@@ -260,6 +288,12 @@ public class TopicoService {
                 "<input type=\"hidden\" id=\"msg\" name=\"msg\" value=\"" + resp + "\">");
     }
 
+    /**
+     * Deleta um topico
+     * @param request
+     * @param response
+     * @return  formulário com resultado
+     */
     public Object delete(Request request, Response response) {
         int id = Integer.parseInt(request.params(":id"));
         Topico topico = topicoDAO.get(id);
