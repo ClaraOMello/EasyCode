@@ -78,7 +78,8 @@
     font-size: 14px;
 }
 
-#tbCursos {
+#tbCursos,
+#tbCursosL {
     margin-bottom: 0;
 
 }
@@ -147,4 +148,8 @@
 
 #titleCad{
     color:white
+}
+
+.imgTabelaL {
+    height: 6.9rem;
 }

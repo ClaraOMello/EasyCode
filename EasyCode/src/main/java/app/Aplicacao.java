@@ -36,6 +36,10 @@ public class Aplicacao {
         get("/colaboradorAdm/update/:id", (request, response) -> colabService.updateAdm(request, response)); // atualiza colabborador comum para administrador
         post("/perfilUser/update/:id", (request, response) -> colabService.updateInfoPessoal(request, response));
         get("colaborador/delete/:id", (request, response) -> colabService.delete(request, response));
+
+        post("/perfilUser/insertL", (request, response) -> lingService.insert(request, response));
+        post("/perfilUser/lingUp/:id", (request, response) -> lingService.update(request, response));
+        get("/perfilUser/deleteL/:id", (request, response) -> lingService.delete(request, response));
         
         get("/edicao/:id", (request, response) -> topService.getToUpdate(request, response));
         get("/topico/delete/:id", (request, response) -> topService.delete(request, response));

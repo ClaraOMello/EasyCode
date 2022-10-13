@@ -160,7 +160,44 @@ public class ColaboradorService {
             form = form.replaceFirst("<span class=\"black\">Nome:</span> <span id=\"nomeUser\">Standro</span> <br>", "<span class=\"black\">Nome:</span> <span id=\"nomeUser\">"+user.getNome()+"</span> <br>");
             form = form.replaceFirst("<span class=\"black\">Tipo de Usuário:</span> <span id=\"tipoUser\"> xxx </span> <br>", "<span class=\"black\">Tipo de Usuário:</span> <span id=\"tipoUser\"> "+ tipoUser +" </span> <br>");
             form = form.replaceFirst("<span class=\"black\">Data de adesão:</span> <span id=\"anoUser\">2022</span><br>", "<span class=\"black\">Data de adesão:</span> <span id=\"anoUser\">"+user.getAdesao().format(df) +"</span><br>"); // tempo aparece a hora atual
-	    }
+	    
+			if (tipoUser.equals("Administrador")) {
+				form = form.replaceFirst("<BOTAO-LINGUAGEM>",
+						"<button type=\"button\" id=\"start-btn lingBtn\" class=\"btn\"> <a id=\"btnLing\">Linguagens</a> </button>");
+
+				texto = "<div class=\"row\">\r\n";
+				texto += "<h1>Linguagens Atuais:\r\n";
+				texto += "<button type=\"button\" id=\"start-btn\" class=\"btn\">\r\n";
+				texto += "<a id=\"btnTop\">Tópicos</a>\r\n";
+				texto += "</button>\r\n";
+				texto += "<button type=\"button\" id=\"start-btn\" class=\"btn btnTestinho\" data-bs-toggle=\"modal\"data-bs-target=\"#staticBackdropLing\">\r\n";
+				texto += "Nova Linguagem";
+				texto += "</button>\r\n";
+				texto += "</h1>\r\n";
+				texto += "</div>\r\n";
+				form = form.replaceFirst("<TITULING>", texto);
+				texto = "<tbody>\r\n";
+				List<Linguagem> lings = linguagemDAO.getOrderById();
+				for (Linguagem l : lings) {
+					texto += "	<tr id=\"conteudotable\" class=\"table-hover\">\r\n";
+					texto += "		<th scope=\"col\" class=\"fs-4\">" + l.getId() + "</th>\r\n";
+					texto += "		<td id=\"nome" + l.getId() + "\" class=\"tituloTabela\">" + l.getNome()
+							+ "</td>\r\n";
+					texto += "		<td id=\"img" + l.getId()
+							+ "\" class=\"autorTabela\"><img class=\"imgTabelaL\" src=\"" + l.getImg()
+							+ "\" alt=\"\"></td>\r\n";
+					texto += "		<td class=\"text-muted linkTabela\"><button type=\"button\" value=\"editarL-"
+							+ l.getId()
+							+ "\" id=\"btnEditar\"class=\"btn\" data-bs-toggle=\"modal\" data-bs-target=\"#staticBackdropLing\"><i class=\"fa-solid fa-pen\"></i> Editar</button></td>\r\n";
+					texto += "		<td class=\"text-muted linkTabela\"><button type=\"button\" value=\"deletarL-"
+							+ l.getId() + "\"id=\"btnDeletar\"class=\"btn\" onclick=\"confirmarDeleteLing(" + l.getId()
+							+ ", '" + l.getNome() + "')\"<i class=\"fa-solid fa-trash\"></i> Excluir</button></td>\r\n";
+					texto += "	</tr>\r\n";
+				}
+				texto += "</tbody>\r\n";
+				form = form.replaceFirst("<R-DE-LING>", texto);
+			}
+		}
         return form;
         
 	}
