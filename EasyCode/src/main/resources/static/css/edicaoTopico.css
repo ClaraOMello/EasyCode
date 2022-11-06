@@ -1,0 +1,32 @@
+#divBtnEdicao {
+    margin-left: 60%;
+    width: 30%;
+}
+
+#edicaoTopico {
+    display: grid;
+}
+
+#edicaoBtn {
+    width: 40%;
+}
+
+#edicaoCancelaBtn {
+    width: 45%;
+    background-color: #565555;
+}
+
+#nomeTopico {
+    margin-top: 10px;
+    background: none;
+    color: white;
+    resize: none;
+    font-size: 1.2rem;
+}
+
+#conteudoTopico {
+    background: none;
+    color: white;
+    resize: none;
+    min-height: 200px;
+}
