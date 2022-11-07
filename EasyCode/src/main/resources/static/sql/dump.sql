@@ -81,7 +81,7 @@ CREATE TABLE IF NOT EXISTS mensagemchat
     enviou integer NOT NULL,
     recebeu integer NOT NULL,
     conteudo varchar(150)NOT NULL,
-    data date,
+    horario timestamp,
     CONSTRAINT pk_mensagemchat PRIMARY KEY (id),
     CONSTRAINT fk_mensagemchat_enviou FOREIGN KEY (enviou)
         REFERENCES colaborador (id),
