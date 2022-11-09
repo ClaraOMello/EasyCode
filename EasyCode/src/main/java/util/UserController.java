@@ -2,8 +2,11 @@ package util;
 
 //import java.util.ArrayList;
 import java.util.List;
+
+
 import dao.ColaboradorDAO;
 import model.Colaborador;
+import org.jasypt.util.password.StrongPasswordEncryptor;
 
 import spark.*;
 
@@ -47,17 +50,17 @@ public class UserController {
         
         achou = false;
         colabs.forEach(c -> {
-            if (password.equals(c.getSenha()) && username.equals(c.getNome())) achou = true;
+            if ((password.equals(c.getSenha()) || checkPassword(password, c.getSenha())) && username.equals(c.getNome())) achou = true;
         });
         return achou;
             
     }
+    public static boolean checkPassword(String inputPassword, String encryptedStoredPassword) {
+        StrongPasswordEncryptor encryptor = new StrongPasswordEncryptor();
+        try {
+        return encryptor.checkPassword(inputPassword, encryptedStoredPassword);
+        } catch(Exception e) { return false; }
+    }
+    
 
-//    public static void setPassword(String username, String oldPassword, String newPassword) {
-//        if (authenticate(username, oldPassword)) {
-//            String newSalt = BCrypt.gensalt();
-//            String newHashedPassword = BCrypt.hashpw(newSalt, newPassword);
-//            // Update the user salt and password
-//        }
-//    }
 }

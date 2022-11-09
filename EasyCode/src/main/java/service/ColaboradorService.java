@@ -1,6 +1,7 @@
 package service;
 
 import java.util.Scanner;
+import org.jasypt.util.password.StrongPasswordEncryptor;
 //import java.time.LocalDate;
 import java.io.File;
 import java.time.format.DateTimeFormatter;
@@ -203,6 +204,11 @@ public class ColaboradorService {
 	}
 	
 	
+	public static String encryptPassword(String inputPassword) {
+	    StrongPasswordEncryptor encryptor = new StrongPasswordEncryptor(); // SHA-256.
+
+	    return encryptor.encryptPassword(inputPassword);
+	}
 	/**
 	 * Cria um login para o usuário na database
 	 * @param request
@@ -212,6 +218,7 @@ public class ColaboradorService {
 		String nome = request.queryParams("nome");
 		String email = request.queryParams("email");
 		String senha = request.queryParams("senha");
+		senha = encryptPassword(senha);
 		// String confirmaSenha = request.queryParams("confirmaSenha");
 		int id = colaboradorDAO.getLastId() + 1;
 		List<Colaborador> colabs = colaboradorDAO.get();
