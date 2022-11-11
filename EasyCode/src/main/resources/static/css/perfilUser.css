@@ -65,7 +65,7 @@
 .form-group,
 .form-group>#btnCadastrar,
 #inserirLing>button {
-    margin:1vh;
+    margin: 1vh;
 }
 
 .form-group>#btnCadastrar {
@@ -134,6 +134,21 @@
 
 .btnTestinho {
     margin-left: 1vw;
+}
+
+#adm {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.card-text>td{
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+th.col-8{
+    font-size: 1.5rem;
+    font-weight: bolder;
 }
 
 .tituloTabela,

@@ -92,7 +92,7 @@ public class ColaboradorService {
     	            texto += "<tr class=\"card-text\"> \r\n"
     	                    + "                                <td>"+c.getNome()+"</td>\r\n"
     	                    + "                                <td>\r\n"
-    	                    + "                                    <a href=\"/colaboradorAdm/update/"+c.getId()+"\" style=\"border:none\" class=\"btn\" id=\"adm\"><u>Tornar Adm</u></a>\r\n"
+    	                    + "                                    <a href=\"/colaboradorAdm/update/"+c.getId()+"\" class=\"btn\" id=\"adm\"><u>Tornar Adm</u></a>\r\n"
     	                    + "                                </td>                       \r\n"
     	                    + "                            </tr>";
     	            if(c.getAdm()) texto = texto.replace("                                    <a href=\"/colaboradorAdm/update/" + c.getId() + "\" style=\"border:none\" class=\"btn\" id=\"adm\"><u>Tornar Adm</u></a>\r\n", "já é administrador\r\n");
