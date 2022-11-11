@@ -42,6 +42,13 @@
             alert('Tópico (ID ' + id + ') excluído')
         }
     }
+    
+    function confirmarDeleteLing(id) {
+        if (confirm('Confirmar a exclusão do tópico (ID ' + id + ')')) {
+            location.href = '/perfilUser/deleteL/' + id;
+            alert('Linguagem (ID ' + id + ') excluído')
+        }
+    }
 </script>
 
 <body onload="onLoad()">
