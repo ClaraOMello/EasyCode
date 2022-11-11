@@ -9,6 +9,15 @@ body {
     color: white;
     padding: 0;
     margin: 0;
+    font-family: Roboto;
+}
+
+header{
+
+}
+
+main{
+    min-height: 81.3vh;
 }
 
 .sconde {
@@ -92,10 +101,6 @@ textarea {
     margin-bottom: 15px;
 }
 
-#conteudoLing {
-    min-height: 700px;
-}
-
 #btEnviar,
 #btSalvar {
     margin: 0px;
@@ -130,6 +135,7 @@ textarea {
     justify-items: center;
     position: absolute;
     width: 100%;
+    height: 5vh;
     font-size: 0.9rem;
 }
 
@@ -408,6 +414,7 @@ textarea {
 
 #diminuiMargem {
     margin-top: 60px;
+    
 }
 
 /*Quiz*/

@@ -4,14 +4,14 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-gap: 20px;
-    justify-items: center;;
+    justify-items: center;
 }
 
 .cardsLinguagens {
     height: 300px;
     border-radius: 20px;
     border: solid;
-    border-color: white;
+    border-color: rgb(238, 216, 255);
     border-width: 2px;
 }
 

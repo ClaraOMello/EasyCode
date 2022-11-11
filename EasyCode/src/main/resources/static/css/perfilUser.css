@@ -2,7 +2,10 @@
 .cabecalhoPerfil {
     width: 100%;
     height: 250px;
-    background-color: rgb(17, 1, 44);
+    background-size: cover;
+    background-position: 0% 50%;
+    background-image: url(../img/testeBan.png);
+    opacity: 0.92;
 }
 
 .cabecalhoPerfil .avatar {
@@ -31,8 +34,17 @@
     margin-top: 10px;
 }
 
-.infoConteudosProduzidos {
-    margin-top: 1rem;
+.infoPessoal button {
+    font-size: 1rem;
+    font-family: Roboto;
+    margin-bottom: 1.4vh;
+}
+
+.lingLinha {
+    margin-bottom: 1.5vh;
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 1.3rem;
 }
 
 .arquivoUser {
@@ -45,16 +57,37 @@
     color: white;
 }
 
+.idColT {
+    width: 9vw !important;
+}
+
+.form-control,
+.form-group,
+.form-group>#btnCadastrar,
+#inserirLing>button {
+    margin:1vh;
+}
+
+.form-group>#btnCadastrar {
+    margin-top: 3vh;
+}
+
+.titColuna {
+    width: 13vw;
+}
+
 #tbTbh {
     overflow-wrap: normal;
 }
 
 #diminuiMargem {
-    margin-top: 1.5rem;
+    margin-top: 0.1rem;
 }
 
 #tbDivH {
     padding: 0%;
+    border: #221f22;
+    border-radius: 13px 13px 0px 0px;
 }
 
 #tbTbh {
@@ -100,8 +133,7 @@
 }
 
 .btnTestinho {
-    position: absolute;
-    right: 2rem;
+    margin-left: 1vw;
 }
 
 .tituloTabela,
@@ -113,7 +145,7 @@
     position: relative;
     align-items: center;
     font-size: 11pt;
-    
+
 }
 
 .linkTabela a {
@@ -142,14 +174,27 @@
     }
 }
 
-.modal-content{
+.modal-content {
     background-color: #221f22;
+    border-radius: 13px;
 }
 
-#titleCad{
-    color:white
+#titleCad {
+    color: white
 }
 
 .imgTabelaL {
     height: 6.9rem;
+    border-radius: 13px;
+}
+
+#conteudoTop>th,
+#conteudoTop>td {
+    padding-right: 4vw;
+    max-width: 10.6355vw;
+}
+
+#conteudotable>th {
+    padding-right: 4vw;
+    width: 3vw;
 }

@@ -1,5 +1,4 @@
 /*Página Modelo Linguagem*/
-.tituloModeloLing,
 .conteudoModeloLing,
 .exemploModeloLing,
 .exercicioModeloLing {
@@ -7,7 +6,16 @@
     margin: 10px 50px;
     padding: 25px;
     text-align: justify;
-    border-radius: 10px;
+    border-radius: 13px;
+}
+
+.tituloModeloLing {
+    background-color: rgba(70, 48, 107, 0.578);
+    margin: 10px 50px;
+    padding: 1.5vh 2vw 1.5vh;
+    text-align: justify;
+    border-radius: 13px;
+    word-wrap: break-word;
 }
 
 .tituloModeloLing h1 {
@@ -15,7 +23,7 @@
 }
 
 .tituloModeloLing span {
-    font-size: 1.8rem;
+    font-size: 3rem;
 }
 
 .exemploModeloLing pre {

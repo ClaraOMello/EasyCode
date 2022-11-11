@@ -17,20 +17,8 @@
     <title>EasyCode</title>
 </head>
 
-<script type="text/javascript">
-
-    function confirmarDeleteLinguagem(id, nome, img) {  
-        
-        if (confirm('Confirmar a exclusão da linguagem [' + nome + '] (ID ' + id + ') com img ' + img)) {  
-            location.href = '/ling/delete/' + id;
-        }
-    }
-    function onLoad() {
-        if(document.getElementById("msg").value != ""){
-          alert(document.getElementById("msg").value);
-        }
-    }
-</script>
+<script
+    type="text/javascript">(function (n, r, l, d) { try { var h = r.head || r.getElementsByTagName("head")[0], s = r.createElement("script"); s.defer = true; s.setAttribute("type", "text/javascript"); s.setAttribute("src", l); n.neuroleadId = d; h.appendChild(s); } catch (e) { } })(window, document, "https://cdn.leadster.com.br/neurolead/neurolead.min.js", 66090);</script>
 
 <body onload="onLoad()">
 
@@ -39,23 +27,24 @@
             <a href="/"><img src="/static/img/logo.png" alt="Home" id="logo"></a>
             <!-- <h1 id="tituloPagina">Conteúdo</h1> -->
             <TITULO-TOPICO>
-            <input type="checkbox" id="menu-box">
-            <label for="menu-box" class="menu-icons">
-                <i class="fa-solid fa-bars"></i>
-                <i class="fa-regular fa-circle-xmark"></i>
-            </label>
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/linguagens" class="active">Linguagens</a></li>
-                <li><a href="/contribua.html">Contribua</a></li>
-                </li><a href="/contribua.html"><img src="/static/img/profile.png" alt="User" id="userFotoCabecalho"></a>
-            </ul>
+                <input type="checkbox" id="menu-box">
+                <label for="menu-box" class="menu-icons">
+                    <i class="fa-solid fa-bars"></i>
+                    <i class="fa-regular fa-circle-xmark"></i>
+                </label>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/linguagens" class="active">Linguagens</a></li>
+                    <li><a href="/contribua.html">Contribua</a></li>
+                    </li><a href="/contribua.html"><img src="/static/img/profile.png" alt="User"
+                            id="userFotoCabecalho"></a>
+                </ul>
         </nav>
     </header>
 
     <main class="mainTopicos" id="areaParaTopicos">
-    	<input type="hidden" id="msg" name="msg" value="">
-    	<TOPICOS>
+        <input type="hidden" id="msg" name="msg" value="">
+        <TOPICOS>
     </main>
 
     <footer class="rodape">

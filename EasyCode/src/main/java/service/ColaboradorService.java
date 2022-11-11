@@ -83,8 +83,8 @@ public class ColaboradorService {
     	                + "                        <table>\r\n"
     	                + "                            <thead>\r\n"
     	                + "                                <tr>\r\n"
-    	                + "                                    <th scope=\"col\" class=\"col-8\"> usuário </th>\r\n"
-    	                + "                                    <th scope=\"col\" > adm </th>\r\n"
+    	                + "                                    <th scope=\"col\" class=\"col-8\"> Usuário: </th>\r\n"
+    	                + "                                    <th scope=\"col\" > Adm </th>\r\n"
     	                + "                                </tr>\r\n"
     	                + "                            </thead>";
     	        for (Colaborador c : colabs) {
@@ -112,7 +112,7 @@ public class ColaboradorService {
     	    texto = "";
     	    List<Topico> topicos = topicoDAO.getTopicosByColab(user.getId(), user.getAdm());
     	    for (Topico t : topicos) {
-    	        texto += "<tr style=\"color:white\"><th scope=\"col\" class=\"fs-4\">"+ t.getId() +"</th>\r\n"
+    	        texto += "<tr class=\"conteudoTop\" style=\"color:white\"><th scope=\"col\" class=\"fs-4\">"+ t.getId() +"</th>\r\n"
     	                + "        <td class=\"tituloTabela\">"+ t.getNome() +"</td>\r\n"
     	                + "        <td class=\"autorTabela\"> "+ topicoDAO.getNomeColabByTopicoId(t.getId()) +" </td>\r\n"
     	                + "        <td class=\"linguaTabela\">"+ topicoDAO.getNomeLinguagem(t.getLing()) +"</td>\r\n"
@@ -148,8 +148,8 @@ public class ColaboradorService {
     	    form = form.replaceFirst("<DESCRICAO>", texto);
     	    
     	    form = form.replaceFirst("<EXCLUSAO-PERFIL>", "<button type=\"button\" id=\"start-btn\" class=\"btn\" onclick=\"confirmarDeletePerfil("+user.getId()+", '"+ user.getNome()+"')\">\r\n"
-    	            + "                            Excluir perfil\r\n"
-    	            + "                        </button>");
+    	            + "<i class=\"fa-solid fa-trash\"></i>\r\n"
+                    + "Excluir Conta</button>");
     	    
     	    // para preencher modal de atualizacao
     	    form = form.replaceFirst("<form class=\"form\" action=\"/perfilUser/update\" method=\"post\" id=\"atualizarPerfil\">", "<form class=\"form\" action=\"/perfilUser/update/"+user.getId()+"\" method=\"post\" id=\"atualizarPerfil\">");
@@ -165,16 +165,18 @@ public class ColaboradorService {
 				form = form.replaceFirst("<BOTAO-LINGUAGEM>",
 						"<button type=\"button\" id=\"start-btn lingBtn\" class=\"btn\"> <a id=\"btnLing\">Linguagens</a> </button>");
 
-				texto = "<div class=\"row\">\r\n";
-				texto += "<h1>Linguagens Atuais:\r\n";
-				texto += "<button type=\"button\" id=\"start-btn\" class=\"btn\">\r\n";
-				texto += "<a id=\"btnTop\">Tópicos</a>\r\n";
-				texto += "</button>\r\n";
-				texto += "<button type=\"button\" id=\"start-btn\" class=\"btn btnTestinho\" data-bs-toggle=\"modal\"data-bs-target=\"#staticBackdropLing\">\r\n";
-				texto += "Nova Linguagem";
-				texto += "</button>\r\n";
-				texto += "</h1>\r\n";
-				texto += "</div>\r\n";
+				texto = "<div class=\"row\">\r\n"
+				        + "                        <span class=\"lingLinha\">\r\n"
+				        + "                            <button type=\"button\" id=\"start-btn\" class=\"btn\">\r\n"
+						+ "                            <a id=\"btnTop\">Tópicos</a>\r\n"
+						+ "                            </button>\r\n"
+				        + "                            <button type=\"button\" id=\"start-btn\" class=\"btn btnTestinho\" data-bs-toggle=\"modal\"data-bs-target=\"#staticBackdropLing\">\r\n"
+				        + "                                Nova Linguagem\r\n"
+				        + "                            </button>\r\n"
+				        + "                        </span>\r\n"
+				        + "                        <h1>Linguagens Atuais:\r\n"
+				        + "                        </h1>\r\n"
+				        + "                    </div>";
 				form = form.replaceFirst("<TITULING>", texto);
 				texto = "<tbody>\r\n";
 				List<Linguagem> lings = linguagemDAO.getOrderById();

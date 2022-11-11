@@ -13,20 +13,23 @@
 
 #edicaoCancelaBtn {
     width: 45%;
-    background-color: #565555;
+    background-color: rgb(70,48,107);
 }
 
 #nomeTopico {
     margin-top: 10px;
-    background: none;
+    background-color: rgba(70, 48, 107, 0.578);
     color: white;
     resize: none;
-    font-size: 1.2rem;
+    border-radius: 13px;
+    font-weight: bold;
+    font-size: 2rem;
 }
 
 #conteudoTopico {
-    background: none;
+    background-color: rgba(37, 25, 60, 0.459);
     color: white;
+    border-radius: 13px;
     resize: none;
-    min-height: 200px;
+    min-height: 65.4vh;
 }

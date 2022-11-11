@@ -17,17 +17,11 @@
     <script defer src="/static/js/contribua.js"></script>
     <title>EasyCode</title>
 </head>
-<!---->
 
-<script type="text/javascript">
-    function onLoad() {
-        if(document.getElementById("msg").value != ""){
-          alert(document.getElementById("msg").value);
-        }
-    }
-</script>
+<script
+    type="text/javascript">(function (n, r, l, d) { try { var h = r.head || r.getElementsByTagName("head")[0], s = r.createElement("script"); s.defer = true; s.setAttribute("type", "text/javascript"); s.setAttribute("src", l); n.neuroleadId = d; h.appendChild(s); } catch (e) { } })(window, document, "https://cdn.leadster.com.br/neurolead/neurolead.min.js", 66090);</script>
 
-<body onload="onLoad()">
+<body>
 
     <header>
         <nav class="menu">
@@ -53,7 +47,7 @@
             <div class="card-dark texto-contribua" style="width: 25rem;">
                 <img src="/static/img/logo.png" alt="imagem perfil padrão" class="card-img-top">
                 <div class="card-body">
-                    <p class="offset-xl-3 col-xl-6 offset-lg-3 col-lg-6 offset-md-2 col-md-8 offset-1 col-10">Por meio
+                    <p class="offset-2 col-8">Por meio
                         desta
                         página, entre em sua conta para contribuir com o site!</p>
                 </div>
@@ -64,54 +58,59 @@
                 <div class="card-body cardDebaixo">
                     <form method="post" class="form" id="login" style="width: 13rem;">
                         <h1 class="tituloForm">Login</h1>
-                    <authenticationfailed>
-                        <div class="inputsForm">
-                            <input name="loginUsuario" type="text" placeholder="Usuário:" autofocus id="loginUsuario" class="inputForm">
-                        </div>
-                        <div class="inputsForm">
-                            <input name="loginSenha" type="password" placeholder="Senha:" autofocus id="loginSenha" class="inputForm">
-                        </div>
-                        <p class="textoForm">
-                            <a id="linkCriar" class="linkConta">Criar conta</a>
-                        </p>
-                        <div class="inputsForm">
-                            <button class="btn btn-primary btn-block" type="submit">Continuar</button>
-                        </div>
+                        <authenticationfailed>
+                            <div class="inputsForm">
+                                <input name="loginUsuario" type="text" placeholder="Usuário:" autofocus
+                                    id="loginUsuario" class="inputForm">
+                            </div>
+                            <div class="inputsForm">
+                                <input name="loginSenha" type="password" placeholder="Senha:" autofocus id="loginSenha"
+                                    class="inputForm">
+                            </div>
+                            <p class="textoForm">
+                                <a id="linkCriar" class="linkConta">Criar conta</a>
+                            </p>
+                            <div class="inputsForm">
+                                <button class="btn btn-primary btn-block" type="submit">Continuar</button>
+                            </div>
                     </form>
                 </div>
             </div>
             <!--Login Fim-->
-			<input type="hidden" id="msg" name="msg" value="">
+            <input type="hidden" id="msg" name="msg" value="">
             <!--Criar Inicio-->
             <div class="card-dark cardDoLogin sconde" id="cardCriarConta" style="width: 25rem;">
                 <div class="card-body card-dark cardDoLogin cardDebaixo">
                     <form class="form" id="criarConta" action="login/insert" method="post" style="width: 13rem;">
-                        <h1 class="tituloForm">Criar sua conta</h1>
+                        <h1 class="tituloForm">Criar Conta</h1>
                         <div class="inputsForm">
-                            <input type="text" placeholder="Usuário:" autofocus id="nome" name="nome" class="inputForm" required>
+                            <input type="text" placeholder="Usuário:" autofocus id="nome" name="nome" class="inputForm"
+                                required>
                         </div>
                         <div class="inputsForm">
-                            <input type="text" placeholder="Email: " autofocus id="email" name="email" class="inputForm" required>
+                            <input type="text" placeholder="Email: " autofocus id="email" name="email" class="inputForm"
+                                required>
                         </div>
                         <div class="inputsForm">
-                            <input type="password" placeholder="Senha:" autofocus id="senha" name="senha" class="inputForm" required>
-                        </div>
-                        <div class="inputsForm">
-                            <input type="password" placeholder="Confirme sua senha:" autofocus id="confirmaSenha" name="confirmaSenha"
+                            <input type="password" placeholder="Senha:" autofocus id="senha" name="senha"
                                 class="inputForm" required>
+                        </div>
+                        <div class="inputsForm">
+                            <input type="password" placeholder="Confirme sua senha:" autofocus id="confirmaSenha"
+                                name="confirmaSenha" class="inputForm" required>
                         </div>
                         <p class="textoForm">
                             <a id="linkLogin" class="linkConta">Entre na sua conta.</a>
                         </p>
                         <div class="inputsForm">
-                            <button class="btn btn-primary btn-block" type="submit" >Continuar</button>
+                            <button class="btn btn-primary btn-block" type="submit">Continuar</button>
                         </div>
                     </form>
                     <!--Criar Fim-->
                 </div>
-             </div>
+            </div>
     </main>
-    
+
     <footer class="rodape">
         @Copyright
     </footer>

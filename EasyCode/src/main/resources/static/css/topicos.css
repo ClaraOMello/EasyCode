@@ -2,17 +2,19 @@
 .textoTopicos a {
     text-decoration: none;
     color: white;
+    font-size: 1.1rem;
+    font-weight: bold;
 }
 
 .textoTopicos li {
-    margin-bottom: 20px;
+    margin-bottom: 2vh;
+    margin-left: 1vw;
 }
 
 .tituloLinguagemTopicos {
-    margin-left: 15%;
-    margin-top: 15px;
-    margin-bottom: 30px;
-    font-size: 4rem;
+    margin: 1vh 4vw 3vh;
+    font-size: 3.5rem;
+    word-wrap: break-word;
 }
 
 .textoTopicos a:hover {
@@ -21,7 +23,7 @@
 
 .mainTopicos {
     background-color: rgba(37, 25, 60, 0.251);
-    padding: 25px;
-    margin: 15px 15% 20px;
-    border-radius: 10px;
+    padding: 3vh;
+    margin: 9px 15% 1px;
+    border-radius: 13px;
 }

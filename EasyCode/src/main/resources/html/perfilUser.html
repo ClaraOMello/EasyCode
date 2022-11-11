@@ -28,11 +28,6 @@
             alert('Usuário [' + nome + '] (ID ' + id + ') excluído')
         }
     }
-    function onLoad() {
-        if (document.getElementById("msg").value != "") {
-            alert(document.getElementById("msg").value);
-        }
-    }
     function editarTopico(id) {
         location.href = '/edicao/' + id;
     }
@@ -44,7 +39,7 @@
     }
 </script>
 
-<body onload="onLoad()">
+<body>
 
     <header>
         <nav class="menu">
@@ -72,13 +67,6 @@
         <section class="row infoUser">
             <div class="infoPessoal col-12 col-xg-4 col-lg-4 col-md-4">
                 <h3><span>Descrição:</span>
-                    <span>
-                        <button type="button" id="start-btn" class="btn offset-3" data-bs-toggle="modal"
-                            data-bs-target="#modalEditar" style="border:none">
-                            <i class="fa-solid fa-pen-to-square"></i>
-                        </button>
-                        <EXCLUSAO-PERFIL>
-                    </span>
                 </h3>
 
                 <div class="modal" tabindex="-1" id="modalEditar">
@@ -120,7 +108,6 @@
                 <span class="black">Nome:</span> <span id="nomeUser">Standro</span> <br>
                 <span class="black">Tipo de Usuário:</span> <span id="tipoUser"> xxx </span> <br>
                 <span class="black">Data de adesão:</span> <span id="anoUser">2022</span><br>
-
                 <a href="https://www.instagram.com/napucminas/"><i class="fa-brands fa-instagram"></i></a>
                 <a href="https://open.spotify.com/show/16zThjluq50IPlHJQsYXRN"><i class="fa-brands fa-spotify"></i></a>
                 <a href="https://www.youtube.com/watch?v=xvFZjo5PgG0"><i class="fa-brands fa-youtube"></i></a>
@@ -128,7 +115,14 @@
                         class="fa-brands fa-github"></i></a>
                 </p>
 
-                <CONFIG-COLABORADOR-PARA-ADM>
+                <CONFIG-COLABORADOR-PARA-ADM><br>
+
+                    <button type="button" id="start-btn" class="btn" data-bs-toggle="modal"
+                        data-bs-target="#modalEditar">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                        Editar Conta
+                    </button><br>
+                    <EXCLUSAO-PERFIL><br>
 
             </div>
 
@@ -136,12 +130,14 @@
             <div class="infoConteudosProduzidos col-12 col-xg-8 col-lg-8 col-md-8">
                 <div id="areaTop">
                     <div class="row">
-                        <h1>Tópicos Atuais:
+                        <span class="lingLinha">
                             <BOTAO-LINGUAGEM>
                                 <button type="button" id="start-btn" class="btn btnTestinho" data-bs-toggle="modal"
                                     data-bs-target="#staticBackdrop">
                                     Novo Tópico
                                 </button>
+                        </span>
+                        <h1>Tópicos Atuais:
                         </h1>
                     </div>
                     <div class="mb-4 text-md-left" id="diminuiMargem">
@@ -149,12 +145,12 @@
                             <table id="tbTbh" class="table">
                                 <thead class="table-dark">
                                     <tr>
-                                        <th scope="col">ID</th>
-                                        <th scope="col">Título</th>
-                                        <th scope="col">Autor</th>
-                                        <th scope="col">Linguagem</th>
-                                        <th scope="col">Status</th>
-                                        <th scope="col">Botões</th>
+                                        <th scope="col" class="idColT titColuna">ID</th>
+                                        <th scope="col" class="titColuna">Título</th>
+                                        <th scope="col" class="titColuna">Autor</th>
+                                        <th scope="col" class="titColuna">Linguagem</th>
+                                        <th scope="col" class="titColuna">Status</th>
+                                        <th scope="col" class="titColuna">Botões</th>
                                     </tr>
                                 </thead>
                             </table>
@@ -175,11 +171,11 @@
                                 <table id="tbTbh" class="table">
                                     <thead class="table-dark">
                                         <tr>
-                                            <th scope="col">ID</th>
-                                            <th scope="col">Linguagem</th>
-                                            <th scope="col">Imagem</th>
-                                            <th scope="col">Editar</th>
-                                            <th scope="col">Excluir</th>
+                                            <th scope="col" class="idColT titColuna">ID</th>
+                                            <th scope="col" class="lingColT titColuna">Linguagem</th>
+                                            <th scope="col" class="titColuna">Imagem</th>
+                                            <th scope="col" class="titColuna">Editar</th>
+                                            <th scope="col" class="titColuna">Excluir</th>
                                         </tr>
                                     </thead>
                                 </table>
@@ -199,21 +195,21 @@
         <div class="modal-dialog modal-dialog-centered modal-fullscreen-md-down">
             <div class="modal-content">
                 <div class="modal-header">
-                    <div class="mb-4">
-                        <h1 class="mb-4 lh-1 h2 text-center" id="titleCad"><strong>Cadastro dos
+                        <h1 class="lh-1 h2 text-center" id="titleCad"><strong>Cadastro dos
                                 cursos</strong></h1>
-                    </div>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="container">
                         <div class="" style="z-index: 1">
-                            <div class="card-body p-6">
+                            <div class="p-6">
                                 <form id="frmCadastro" action="/topico/insert">
                                     <div class="form-group" style="display:none">
-                                        <input id="autor" data-index="new" type="text" class="form-control cad" placeholder="Autor" name="autor" value="" />
+                                        <input id="autor" data-index="new" type="text" class="form-control cad"
+                                            placeholder="Autor" name="autor" value="" />
                                     </div>
                                     <div class="form-group">
+                                        <label for="linguagens">Título do Tópico: </label> <br>
                                         <input id="inputTitulo" data-index="new" type="text" class="form-control cad"
                                             placeholder="Título" name="titulo" required />
                                     </div>
@@ -224,7 +220,8 @@
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <button type="submit" value="Inserir" id="btnCadastrar" class="btn btn-primary btn-block mb-3">
+                                        <button type="submit" value="Inserir" id="btnCadastrar"
+                                            class="btn btn-primary btn-block mb-3">
                                             <i class="fas fa-plus"></i> Cadastrar
                                         </button>
                                     </div>
@@ -243,18 +240,19 @@
         <div class="modal-dialog modal-dialog-centered modal-fullscreen-md-down">
             <div class="modal-content">
                 <div class="modal-header">
-                    <div class="mb-4">
-                        <h1 class="mb-4 lh-1 h2 text-center" id="titleCad"><strong>Cadastro das Linguagens</strong></h1>
+                    <div class="">
+                        <h1 class="lh-1 h2 text-center" id="titleCad"><strong>Cadastro das Linguagens</strong></h1>
                     </div>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="container">
                         <div class="" style="z-index: 1">
-                            <div class="card-body p-6">
-                                <form class="form form-group" action="/perfilUser/insertL" method="POST" id="inserirLing">
-                                    <input id="IDLing" data-index="new" type="number" name="IDLing" class="form-control cad"
-                                        placeholder="ID" required />
+                            <div class="p-6">
+                                <form class="form form-group" action="/perfilUser/insertL" method="POST"
+                                    id="inserirLing">
+                                    <input id="IDLing" data-index="new" type="number" name="IDLing"
+                                        class="form-control cad" placeholder="ID" required />
                                     <input id="nomeLing" type="text" name="nomeLing" class="form-control cad"
                                         placeholder="Nome" required />
                                     <input id="imgLing" type="text" name="imgLing" class="form-control cad"

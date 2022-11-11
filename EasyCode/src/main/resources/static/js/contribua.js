@@ -1,5 +1,3 @@
-
-
 document.addEventListener("DOMContentLoaded", () => {
     const loginForm = document.querySelector("#cardLogin");
     const cadastrarConta = document.querySelector("#cardCriarConta");
