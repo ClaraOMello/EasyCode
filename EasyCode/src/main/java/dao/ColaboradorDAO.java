@@ -25,9 +25,14 @@ public class ColaboradorDAO extends DAO {
 		boolean status = false;
 		try {
 			String sql = "INSERT INTO colaborador (id, adm, nome, email, senha) "
-		               + "VALUES (" + colab.getId() + ", '" + colab.getAdm() + "', '"
-		               + colab.getNome() + "', '" + colab.getEmail() + "', '" + colab.getSenha() + "');";
+		               + "VALUES (" + "?" + ", " + "?" + ", "
+		               + "?" + ", " + "?" + ", " + "?" + ");";
 			PreparedStatement st = conexao.prepareStatement(sql);
+			st.setInt(1, colab.getId());
+			st.setBoolean(2, colab.getAdm());
+			st.setString(3, colab.getNome());
+			st.setString(4, colab.getEmail());
+			st.setString(5, colab.getSenha());
 			st.executeUpdate();
 			st.close();
 			status = true;
